@@ -1,0 +1,7 @@
+#BlueJ class context
+comment0.target=GameMain
+comment0.text=\r\n\ \ Starting\ point\ for\ the\ zuul\ game\r\n\r\n\ @author\ M.\ Schuringa\r\n\ @version\ 0.1\r\n
+comment1.params=args
+comment1.target=void\ main(java.lang.String[])
+comment1.text=\r\n\ The\ starting\ point\ for\ the\ zuul\ game\r\n\ @param\ args\ Program\ arguments\r\n
+numComments=2
