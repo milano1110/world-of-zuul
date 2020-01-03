@@ -1,27 +1,46 @@
+import java.util.HashMap;
 /**
- * This class is part of the "World of Zuul" application. 
- * "World of Zuul" is a very simple, text based adventure game.  
- * 
  * This class holds an enumeration of all command words known to the game.
  * It is used to recognise commands as they are typed in.
  *
- * @author  Michael Kölling and David J. Barnes
- * @version 2016.02.29
+ * @author  M. Schuringa
+ * @version 0.2
  */
 
 public class CommandWords
 {
-    // a constant array that holds all valid command words
-    private static final String[] validCommands = {
-        "go", "quit", "help", "look", "back", "take", "drop", "items", "eat"
-    };
+    // A mapping between a command word and the CommandWord
+    // associated with it.
+    private HashMap<String, CommandWord> validCommands;
 
     /**
      * Constructor - initialise the command words.
      */
     public CommandWords()
     {
-        // nothing to do at the moment...
+        validCommands = new HashMap<>();
+        for(CommandWord command : CommandWord.values()) {
+            if(command != CommandWord.UNKNOWN) {
+                validCommands.put(command.toString(), command);
+            }
+        }
+    }
+    
+    /**
+     * Find the CommandWord associated with a command word.
+     * @param commandWord The word to look up (as a string).
+     * @return The CommandWord correspondng to commandWord, or UNKNOWN
+     *         if it is not a valid command word.
+     */
+    public CommandWord getCommandWord(String commandWord)
+    {
+        CommandWord command = validCommands.get(commandWord);
+        if(command != null) {
+            return command;
+        }
+        else {
+            return CommandWord.UNKNOWN;
+        }
     }
 
     /**
@@ -31,12 +50,7 @@ public class CommandWords
      */
     public boolean isCommand(String aString)
     {
-        for(int i = 0; i < validCommands.length; i++) {
-            if(validCommands[i].equals(aString))
-                return true;
-        }
-        // if we get here, the string was not found in the commands
-        return false;
+        return validCommands.containsKey(aString);
     }
     
     /**
@@ -45,9 +59,9 @@ public class CommandWords
     public String getCommandList()
     {
         String commandList = "";
-        for (String command : validCommands)
+        for (String command : validCommands.keySet())
         {
-            commandList += command + " ";
+            commandList += command + "\n";
         }
         return commandList;
     }

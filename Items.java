@@ -36,6 +36,16 @@ public class Items
         return items.remove(name);
     }
     
+    public boolean empty()
+    {
+        boolean invEmpty = false;
+        if (items.isEmpty())
+        {
+            invEmpty = true;
+        }
+        return invEmpty;
+    }
+    
     /**
      * Put the given item in the list.
      * @param name The name of the item.
@@ -65,7 +75,7 @@ public class Items
         String returnString = "";
         for (Iterator<Item> iter = items.values().iterator(); iter.hasNext(); )
         {
-            returnString += " \n" + iter.next().getDescription();
+            returnString += " \n- " + iter.next().getDescription();
         }
         return returnString;
     }

@@ -6,7 +6,7 @@ import java.util.Iterator;
  * Class Room - a room in an adventure game.
  *
  * A "Room" represents one location in the scenery of the game.  It is 
- * connected to other rooms via exits.  The exits are labelled north, 
+ * connected to other rooms via doors.  The doors are labelled north, 
  * east, south, west.  For each direction, the room stores a reference
  * to the neighboring room, or null if there is no exit in that direction.
  * 
@@ -16,19 +16,19 @@ import java.util.Iterator;
 public class Room 
 {
     private String description;
-    private HashMap<String, Room> exits;
+    private HashMap<String, Door> doors;
     private Items items;
 
     /**
      * Create a room described "description". Initially, it has
-     * no exits. "description" is something like "a kitchen" or
+     * no doors. "description" is something like "a kitchen" or
      * "an open court yard".
      * @param description The room's description.
      */
     public Room(String description) 
     {
         this.description = description;
-        exits = new HashMap<>();
+        doors = new HashMap<>();
         items = new Items();
     }
     
@@ -37,31 +37,31 @@ public class Room
      * @param direction The direction of the exit.
      * @param neighbor  The room to which the exit leads.
      */
-    public void setExit(String direction, Room neighbor)
+    public void setDoor(String direction, Door door)
     {
-        exits.put(direction, neighbor);
+        doors.put(direction, door);
     }
     
     /**
-     * Define the exits of this room.  Every direction either leads
-     * to another room or is null (no exit there).
-     * @param direction The direction of the exits.
+     * Define the doors of this room.  Every direction either leads
+     * to another room or is null (no door there).
+     * @param direction The direction of the doors.
      * @return The room in the given direction.
      */
-    public Room getExit(String direction)
+    public Door getDoor(String direction)
     {
-        return exits.get(direction);
+        return doors.get(direction);
     }
     
     /**
      * Returns a string describing the room's exits, for example
-     * "Exits: north west".
-     * @return The exits of a room.
+     * "Doors: north west".
+     * @return The doors of a room.
      */
     public String getExitString()
     {
-        String returnString = "Exits: ";
-        Set<String> keys = exits.keySet();
+        String returnString = "Doors: ";
+        Set<String> keys = doors.keySet();
         for (Iterator<String> iter = keys.iterator(); iter.hasNext(); )
         {
             returnString += " " + iter.next();
@@ -80,13 +80,29 @@ public class Room
     /**
      * Return a description of the room in the form:
      *     You are in the kitchen.
-     *     Exits: north west
+     *     doors: north west
      * 
-     * @return A long decription of the room and the exits.
+     * @return A long decription of the room and the doors.
      */
     public String getLongDescription()
     {
-        return "You are in the " + description + ".\n" + getExitString() + "\nItems in the room: " + items.getLongDescription();
+        String returnString = "You are in the " + description + ".\n" + getExitString(); 
+        if (description == "a strange, dark place")
+        {
+            returnString += "";
+        }
+        else
+        {
+            if (items.empty() == true)
+            {
+                returnString += "\nThere are no items in the room.";
+            }
+            else
+            {
+                returnString += "\nItems in the room: " + items.getLongDescription();
+            }
+        }
+        return returnString;
     }
        
     /**

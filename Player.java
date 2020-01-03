@@ -1,4 +1,4 @@
-
+import java.util.Iterator;
 /**
  * This is the representation of a player
  *
@@ -10,16 +10,50 @@ public class Player
     private String name;
     private Room currentRoom;
     private Items items = new Items();
-    private double maxWeight;
+    private double maxWeight = 1;
     
     /**
-     * Initializing the player's name.
+     * Initializing the player's name and start room.
      * @param name Name of the player.
+     * @param startRoom Room where the player starts.
      */
-    public Player(String name)
+    public Player(String name, Room startRoom)
     {
         this.name = name;
-        this.maxWeight = 10;
+        this.currentRoom = startRoom;
+    }
+    
+    /**
+     * Goes through the door in the given direction.
+     * If successful it will return true, if not it will return false.
+     * Which could indicate that there is no door or that it is locked 
+     * and that you need a key for it.
+     */
+    public boolean goThrough(String direction)
+    {
+        Door door = currentRoom.getDoor(direction);
+        if (door == null)
+        {
+            return false;
+        }
+        
+        Room nextRoom = door.open(currentRoom);
+        if (nextRoom == null)
+        {
+            Iterator iter = items.iterator();
+            while(iter.hasNext() && !door.unlock((Item) iter.next()));
+        }
+        
+        nextRoom = door.open(currentRoom);
+        if (nextRoom != null)
+        {
+            enterRoom(nextRoom);
+            return true;
+        }
+        else
+        {
+            return false;
+        }
     }
     
     /**
@@ -55,7 +89,16 @@ public class Player
      */
     public String getItemsString()
     {
-        return "You are carrying: " + items.getLongDescription();
+        String returnString = "Your total weight: " + items.getTotalWeight();
+        if (items.empty() == true)
+        {
+            returnString += "\nYour inventory is empty.";
+        }
+        else
+        {
+            returnString += "\nYou are carrying: " + items.getLongDescription();
+        }
+        return returnString;
     }
     
     /**
@@ -66,7 +109,6 @@ public class Player
     public String getLongDescription()
     {
         String returnString = currentRoom.getLongDescription();
-        //returnString += "\n" + getItemsString();
         return returnString;
     }
     
@@ -116,7 +158,7 @@ public class Player
             Item bread = items.get(itemName);
             if (bread == null)
             {
-                bread = currentRoom.removeItem(itemName);
+                bread = items.remove(itemName);
             }
             
             if (bread != null)

@@ -14,68 +14,20 @@ import java.util.Stack;
 public class Game 
 {
     private Parser parser;
-    private Room currentRoom;
     private Stack<Room> roomHistory;
     private Player player;
+    private Scenario scenario;
         
     /**
      * Create the game and initialise its internal map.
      */
     public Game() 
     {
-        player = new Player("Myraelith");
-        Room startRoom = createRooms();
-        player.enterRoom(startRoom);
+        scenario = new Scenario();
+        Room startRoom = scenario.getStartRoom();
+        player = new Player("Myraelith", startRoom);
         parser = new Parser();
         roomHistory = new Stack<>();
-    }
-
-    /**
-     * Create all the rooms and link their exits together.
-     */
-    private Room createRooms()
-    {
-        Room harbor, garden, tower, helix, vault, cathedral, city, sanctum;
-      
-        // create the rooms
-        harbor = new Room("Bitterblack Harbor");
-        garden = new Room("Garden of Ignominy");
-        tower = new Room("Duskmoon Tower");
-        helix = new Room("Midnight Helix");
-        vault = new Room("Vault of Defiled Truth");
-        cathedral = new Room("Forsaken Cathedral");
-        city = new Room("Fallen City"); 
-        sanctum = new Room("Bitterblack Sanctum");
-        
-        // put items in the room
-        garden.addItem(new Item("bread", "tasty looking bread", 0.5));
-        helix.addItem(new Item("key", "a special looking key", 0.1));
-        
-        // initialise room exits
-        harbor.setExit("north", garden);
-        
-        garden.setExit("south", harbor);
-        garden.setExit("east", tower);
-             
-        tower.setExit("west", garden);
-        tower.setExit("east", helix);
-        tower.setExit("north", vault);
-                
-        helix.setExit("west", tower);
-
-        vault.setExit("south", tower);
-        vault.setExit("north", cathedral);
-
-        cathedral.setExit("south", vault);
-        cathedral.setExit("north", city);
-        
-        city.setExit("south", cathedral);
-        city.setExit("north", sanctum);
-        
-        sanctum.setExit("south", city);
-        sanctum.setExit("west", harbor); // after boss defeat, teleport back 
-
-        return harbor;  // start game in the harbor
     }
 
     /**
@@ -105,7 +57,7 @@ public class Game
         System.out.println();
         System.out.println("Welcome " + player.getName() + ", to the Bitterblack Isle.");
         System.out.println("The Bitterblack Isle is a remote island off the shore of the mainland");
-        System.out.println("Type 'help' if you need help.");
+        System.out.println("Type '" + CommandWord.HELP + "' if you need help.");
         System.out.println();
         System.out.println(player.getLongDescription());
     }
@@ -118,51 +70,51 @@ public class Game
     private boolean processCommand(Command command) 
     {
         boolean wantToQuit = false;
-
-        if(command.isUnknown()) 
+        
+        CommandWord commandWord = command.getCommandWord();
+        
+        switch (commandWord)
         {
-            System.out.println("I don't know what you mean...");
-            return false;
+            case UNKNOWN:
+                System.out.println("I don't know what you mean...");
+                break;
+            
+            case HELP:
+                printHelp();
+                break;
+            
+            case GO:
+                goRoom(command);
+                break;
+                
+            case QUIT:
+                wantToQuit = quit(command);
+                break;
+                
+            case LOOK:
+                look();
+                break;
+                
+            case BACK:
+                goBack(command);
+                break;
+                
+            case TAKE:
+                take(command);
+                break;
+                
+            case DROP:
+                drop(command);
+                break;
+                
+            case ITEMS:
+                printItems();
+                break;
+                
+            case EAT:
+                eat(command);
+                break;
         }
-
-        String commandWord = command.getCommandWord();
-        if (commandWord.equals("help")) 
-        {
-            printHelp();
-        }
-        else if (commandWord.equals("go")) 
-        {
-            goRoom(command);
-        }
-        else if (commandWord.equals("look"))
-        {
-            look();
-        }
-        else if (commandWord.equals("back"))
-        {
-            goBack(command);
-        }
-        else if (commandWord.equals("take"))
-        {
-            take(command);
-        }
-        else if (commandWord.equals("drop"))
-        {
-            drop(command);
-        }
-        else if (commandWord.equals("items"))
-        {
-            printItems();
-        }
-        else if (commandWord.equals("eat"))
-        {
-            eat(command);
-        }
-        else if (commandWord.equals("quit")) 
-        {
-            wantToQuit = quit(command);
-        }
-
         return wantToQuit;
     }
 
@@ -198,17 +150,23 @@ public class Game
         String direction = command.getSecondWord();
 
         // Try to leave current room.
-        Room nextRoom = player.getCurrentRoom().getExit(direction);
+        Door door = player.getCurrentRoom().getDoor(direction);
         
-        if (nextRoom == null) 
+        if (door == null) 
         {
             System.out.println("There is no door.");
         }
         else 
         {
             roomHistory.push(player.getCurrentRoom());
-            player.enterRoom(nextRoom);
-            System.out.println(player.getLongDescription());
+            if (player.goThrough(direction))
+            {
+                System.out.println(player.getLongDescription());
+            }
+            else
+            {
+                System.out.println("The door is locked and you don't have the key for it.");
+            }
         }
     }
     
@@ -282,6 +240,7 @@ public class Game
         else
         {
             System.out.println("You picked up " + item.getDescription());
+            printItems();
         }
     }
     
@@ -304,6 +263,7 @@ public class Game
         else 
         {
             System.out.println("You dropped " + item.getDescription());
+            printItems();
         }
     }
     
@@ -336,6 +296,7 @@ public class Game
         else
         {
             System.out.println("You ate " + item.getDescription());
+            printItems();
         }
     }
 }

@@ -1,0 +1,13 @@
+#BlueJ class context
+comment0.target=TeleporterRoom
+comment0.text=\r\n\ A\ TeleporterRoom\ is\ a\ room\ that\ will\ automatically\ transport\ you\ \r\n\ to\ another\ room\ when\ you\ try\ to\ leave\ it.\r\n\ \r\n\ @author\ M.\ Schuringa\r\n\ @version\ 0.1\r\n
+comment1.params=description\ scene
+comment1.target=TeleporterRoom(java.lang.String,\ Scenario)
+comment1.text=\r\n\ Create\ a\ room\ that\ teleports\ you\ back\ to\ the\ beginning\r\n
+comment2.params=
+comment2.target=java.lang.String\ getExitString()
+comment2.text=\r\n\ Describe\ the\ exits.\ Since\ this\ is\ a\ Teleport\ room,\ you\ see\ no\r\n\ clear\ exits.\r\n
+comment3.params=direction
+comment3.target=Room\ getExit(java.lang.String)
+comment3.text=\r\n\ Return\ the\ room\ that\ the\ player\ started\ in.\r\n
+numComments=4

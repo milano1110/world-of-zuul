@@ -1,0 +1,16 @@
+#BlueJ class context
+comment0.target=Door
+comment0.text=\r\n\ A\ door\ that\ connects\ two\ rooms.\r\n\ Some\ doors\ are\ locked\ and\ requires\ a\ key\ to\ be\ opened.\r\n\r\n\ @author\ M.\ Schuringa\r\n\ @version\ 0.1\r\n
+comment1.params=room1\ direction1\ room2\ direction2\ key
+comment1.target=Door(Room,\ java.lang.String,\ Room,\ java.lang.String,\ Item)
+comment1.text=\r\n\ Create\ a\ new\ door\ between\ two\ rooms.\r\n\ It\ also\ takes\ a\ key\ as\ parameter\ which\ can\ be\ used\ to\ unlock\ the\ door.\r\n
+comment2.params=key
+comment2.target=boolean\ lock(Item)
+comment2.text=\r\n\ Try\ to\ lock\ the\ door\ with\ the\ key.\r\n\ @return\ True\ if\ the\ door\ was\ successfully\ locked.\r\n
+comment3.params=key
+comment3.target=boolean\ unlock(Item)
+comment3.text=\r\n\ Try\ to\ unlock\ the\ door\ with\ the\ key.\r\n\ @return\ True\ if\ the\ door\ was\ successfully\ unlocked.\r\n
+comment4.params=fromRoom
+comment4.target=Room\ open(Room)
+comment4.text=\r\n\ Try\ to\ go\ through\ the\ door\ from\ one\ room\ to\ the\ other\ room.\r\n\ @param\ fromRoom\ The\ room\ from\ which\ side\ we\ open\ the\ door.\r\n\ @return\ The\ room\ on\ the\ other\ side,\ or\ null\ if\ the\ door\ is\ locked.\r\n
+numComments=5

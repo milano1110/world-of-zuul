@@ -1,0 +1,10 @@
+#BlueJ class context
+comment0.target=Scenario
+comment0.text=\r\n\ The\ Scenario\ represents\ the\ world\ we\ move\ in.\ It\ holds\ all\ locations\r\n\ we\ can\ enter\ in\ this\ game.\r\n\ \r\n\ @author\ M.\ Schuringa\r\n\ @version\ 0.1\r\n
+comment1.params=
+comment1.target=Scenario()
+comment1.text=\r\n\ Create\ a\ complete\ scenario\ (with\ all\ rooms).\r\n
+comment2.params=
+comment2.target=Room\ getStartRoom()
+comment2.text=\r\n\ Return\ the\ room\ where\ players\ start\ the\ game.\r\n
+numComments=3
