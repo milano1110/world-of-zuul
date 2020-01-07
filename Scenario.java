@@ -27,14 +27,17 @@ public class Scenario
         cathedral = new Room("Forsaken Cathedral");
         city = new Room("Fallen City"); 
         sanctum = new Room("Bitterblack Sanctum");
-        teleporter = new TeleporterRoom("a strange, dark place", this);
+        teleporter = new Room("a strange, dark place");
         
-        // create a key for a locked door
+        // create a items
         Item key = new Item("key", "a special looking key", 0.01);
+        Item bread = new Item("bread", "tasty looking bread", 0.5);
+        Item book = new Item("book", "an ancient book", 2);
         
         // put items in the room
-        garden.addItem(new Item("bread", "tasty looking bread", 0.5));
+        garden.addItem(bread);
         helix.addItem(key);
+        cathedral.addItem(book);
         
         // initialise room exits
         new Door(harbor, "north", garden, "south", null);
@@ -42,10 +45,14 @@ public class Scenario
         new Door(garden, "east", tower, "west", null);
         new Door(tower, "east", helix, "west", null);
         new Door(tower, "north", vault, "south", key);
-        new Door(vault, "north", cathedral, "south", null);
-        new Door(cathedral, "north", city, "south", null);
+        new Door(vault, "north", city, "south", null);
         new Door(city, "north", sanctum, "south", null);
-        new Door(sanctum, "west", teleporter, "east", key);
+        new Door(city, "west", cathedral, "east", null);
+        new Door(sanctum, "west", teleporter, "", key);
+        new Door(teleporter, "north", harbor, "", key);
+        new Door(teleporter, "east", harbor, "", key);
+        new Door(teleporter, "south", harbor, "", key);
+        new Door(teleporter, "west", harbor, "", key);
 
         startRoom = harbor;  // start game in the harbor
     }

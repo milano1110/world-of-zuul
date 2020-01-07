@@ -86,13 +86,14 @@ public class Room
      */
     public String getLongDescription()
     {
-        String returnString = "You are in the " + description + ".\n" + getExitString(); 
+        String returnString = "";
         if (description == "a strange, dark place")
         {
-            returnString += "";
+            returnString += "You are in ";
         }
         else
         {
+            returnString = "You are in the " + description + ".\n" + getExitString(); 
             if (items.empty() == true)
             {
                 returnString += "\nThere are no items in the room.";

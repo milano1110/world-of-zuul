@@ -296,6 +296,7 @@ public class Game
         else
         {
             System.out.println("You ate " + item.getDescription());
+            System.out.println("You feel invigorated!");
             printItems();
         }
     }

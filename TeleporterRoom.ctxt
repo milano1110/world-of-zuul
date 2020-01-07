@@ -1,8 +1,8 @@
 #BlueJ class context
 comment0.target=TeleporterRoom
 comment0.text=\r\n\ A\ TeleporterRoom\ is\ a\ room\ that\ will\ automatically\ transport\ you\ \r\n\ to\ another\ room\ when\ you\ try\ to\ leave\ it.\r\n\ \r\n\ @author\ M.\ Schuringa\r\n\ @version\ 0.1\r\n
-comment1.params=description\ scene
-comment1.target=TeleporterRoom(java.lang.String,\ Scenario)
+comment1.params=description\ room
+comment1.target=TeleporterRoom(java.lang.String,\ Room)
 comment1.text=\r\n\ Create\ a\ room\ that\ teleports\ you\ back\ to\ the\ beginning\r\n
 comment2.params=
 comment2.target=java.lang.String\ getExitString()

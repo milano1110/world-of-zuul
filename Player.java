@@ -3,7 +3,7 @@ import java.util.Iterator;
  * This is the representation of a player
  *
  * @author M. Schuringa
- * @version 0.1
+ * @version 0.2
  */
 public class Player
 {
@@ -96,7 +96,7 @@ public class Player
         }
         else
         {
-            returnString += "\nYou are carrying: " + items.getLongDescription();
+            returnString += "\nYour inventory contains: " + items.getLongDescription();
         }
         return returnString;
     }
@@ -156,14 +156,14 @@ public class Player
         if (itemName.equals("bread"))
         {
             Item bread = items.get(itemName);
+            Item player = items.remove(itemName);
             if (bread == null)
             {
-                bread = items.remove(itemName);
+                return player;
             }
             
             if (bread != null)
             {
-                maxWeight += 1;
                 return bread;
             }
         }

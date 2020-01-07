@@ -13,7 +13,7 @@ public class TeleporterRoom extends Room
     /**
      * Create a room that teleports you back to the beginning
      */
-    public TeleporterRoom(String description, Scenario scene)
+    public TeleporterRoom(String description, Room room)
     {
         super(description);
         this.scene = scene;
@@ -36,5 +36,4 @@ public class TeleporterRoom extends Room
     {
         return scene.getStartRoom();
     }
-
 }

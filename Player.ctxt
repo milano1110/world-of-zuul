@@ -1,6 +1,6 @@
 #BlueJ class context
 comment0.target=Player
-comment0.text=\r\n\ This\ is\ the\ representation\ of\ a\ player\r\n\r\n\ @author\ M.\ Schuringa\r\n\ @version\ 0.1\r\n
+comment0.text=\r\n\ This\ is\ the\ representation\ of\ a\ player\r\n\r\n\ @author\ M.\ Schuringa\r\n\ @version\ 0.2\r\n
 comment1.params=name\ startRoom
 comment1.target=Player(java.lang.String,\ Room)
 comment1.text=\r\n\ Initializing\ the\ player's\ name\ and\ start\ room.\r\n\ @param\ name\ Name\ of\ the\ player.\r\n\ @param\ startRoom\ Room\ where\ the\ player\ starts.\r\n
