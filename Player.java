@@ -11,6 +11,8 @@ public class Player
     private Room currentRoom;
     private Items items = new Items();
     private double maxWeight = 1;
+    private int health;
+    private int maxHealth = 20;
     
     /**
      * Initializing the player's name and start room.
@@ -21,6 +23,7 @@ public class Player
     {
         this.name = name;
         this.currentRoom = startRoom;
+        this.health = maxHealth;
     }
     
     /**
@@ -84,12 +87,48 @@ public class Player
     }
     
     /**
+     * Restores player's health.
+     * @param heal The amount of health healed.
+     */
+    public void addHealth(int heal)
+    {
+        health = health + heal;
+    }
+    
+    /**
+     * Get the current health of the player.
+     * @return health The current health.
+     */
+    public int getHealth()
+    {
+        return health;
+    }
+    
+    /**
+     * Damages the health of the player.
+     * @param damage The damage dealt.
+     */
+    public void removeHealth(int damage)
+    {
+        health = health - damage;
+    }
+    
+    /**
+     * Return the health of the player in the form currenthealth/maxhealth.
+     * @return Health of the player.
+     */
+    public String printHealth()
+    {
+        return health + "/" + maxHealth;
+    }
+    
+    /**
      * Returns a string describing the items that the player carries.
      * @return A description of the items held.
      */
-    public String getItemsString()
+    public String getPlayer()
     {
-        String returnString = "Your total weight: " + items.getTotalWeight();
+        String returnString = "Your current health is: " + printHealth() +"\nYour total weight: " + items.getTotalWeight();
         if (items.empty() == true)
         {
             returnString += "\nYour inventory is empty.";

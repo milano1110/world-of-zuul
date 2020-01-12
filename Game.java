@@ -107,8 +107,8 @@ public class Game
                 drop(command);
                 break;
                 
-            case ITEMS:
-                printItems();
+            case PLAYER:
+                printPlayer();
                 break;
                 
             case EAT:
@@ -240,7 +240,7 @@ public class Game
         else
         {
             System.out.println("You picked up " + item.getDescription());
-            printItems();
+            printPlayer();
         }
     }
     
@@ -263,16 +263,16 @@ public class Game
         else 
         {
             System.out.println("You dropped " + item.getDescription());
-            printItems();
+            printPlayer();
         }
     }
     
     /**
      * Prints out the items that the player is currently carrying.
      */
-    private void printItems()
+    private void printPlayer()
     {
-        System.out.println(player.getItemsString());
+        System.out.println(player.getPlayer());
     }
     
     /**
@@ -297,7 +297,7 @@ public class Game
         {
             System.out.println("You ate " + item.getDescription());
             System.out.println("You feel invigorated!");
-            printItems();
+            printPlayer();
         }
     }
 }

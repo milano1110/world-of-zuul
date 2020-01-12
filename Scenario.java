@@ -16,7 +16,7 @@ public class Scenario
      */
     public Scenario()
     {
-        Room harbor, garden, tower, helix, vault, cathedral, city, sanctum, teleporter;
+        Room harbor, garden, tower, helix, vault, cathedral, city, sanctum, corridor, fortress;
       
         // create the rooms
         harbor = new Room("Bitterblack Harbor");
@@ -27,32 +27,41 @@ public class Scenario
         cathedral = new Room("Forsaken Cathedral");
         city = new Room("Fallen City"); 
         sanctum = new Room("Bitterblack Sanctum");
-        teleporter = new Room("a strange, dark place");
+        corridor = new Room("Corridor of Emptiness, \na strange, dark place");
+        fortress = new Room("Fortress of Remembrance");
         
         // create a items
-        Item key = new Item("key", "a special looking key", 0.01);
+        Item key1 = new Item("key", "opens vault", 0.01);
+        Item key2 = new Item("key", "opens shortcut", 0.01);
+        Item key3 = new Item ("key", "opens teleporter", 0.01);
+        Item key4 = new Item ("key", "opens sanctum", 0.01);
         Item bread = new Item("bread", "tasty looking bread", 0.5);
         Item book = new Item("book", "an ancient book", 2);
         
         // put items in the room
         garden.addItem(bread);
-        helix.addItem(key);
         cathedral.addItem(book);
         
         // initialise room exits
-        new Door(harbor, "north", garden, "south", null);
-        new Door(harbor, "west", city, "east", key);
-        new Door(garden, "east", tower, "west", null);
-        new Door(tower, "east", helix, "west", null);
-        new Door(tower, "north", vault, "south", key);
-        new Door(vault, "north", city, "south", null);
-        new Door(city, "north", sanctum, "south", null);
-        new Door(city, "west", cathedral, "east", null);
-        new Door(sanctum, "west", teleporter, "", key);
-        new Door(teleporter, "north", harbor, "", key);
-        new Door(teleporter, "east", harbor, "", key);
-        new Door(teleporter, "south", harbor, "", key);
-        new Door(teleporter, "west", harbor, "", key);
+        new Door(harbor, "east", garden, "west", null);
+        new Door(harbor, "south", fortress, "north", key2);
+        
+        new Door(garden, "south", city, "north", null);
+        
+        new Door(city, "east", cathedral, "west", null);
+        new Door(city, "west", fortress, "east", null);
+        
+        new Door(cathedral, "south", sanctum, "north", key4);
+        
+        new Door(fortress, "west", tower, "east", null);
+        new Door(fortress, "south", vault, "north", key1);
+        
+        new Door(sanctum, "east", corridor, "", key3);
+        
+        new Door(corridor, "north", harbor, "", null);
+        new Door(corridor, "east", harbor, "", null);
+        new Door(corridor, "south", harbor, "", null);
+        new Door(corridor, "west", harbor, "", null);
 
         startRoom = harbor;  // start game in the harbor
     }

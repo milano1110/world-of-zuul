@@ -87,9 +87,9 @@ public class Room
     public String getLongDescription()
     {
         String returnString = "";
-        if (description == "a strange, dark place")
+        if (description.contains("Corridor of Emptiness"))
         {
-            returnString += "You are in ";
+            returnString += "You are in the";
         }
         else
         {
