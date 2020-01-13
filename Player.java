@@ -10,7 +10,7 @@ public class Player
     private String name;
     private Room currentRoom;
     private Items items = new Items();
-    private double maxWeight = 1;
+    private double maxWeight = 20;
     private int health;
     private int maxHealth = 20;
     
@@ -92,7 +92,18 @@ public class Player
      */
     public void addHealth(int heal)
     {
-        health = health + heal;
+        if (health == maxHealth)
+        {
+            System.out.println("Your health is full.");
+        }
+        else
+        {
+            health = health + heal;
+            if (health > maxHealth)
+            {
+                health = maxHealth;
+            }
+        }
     }
     
     /**
