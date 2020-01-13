@@ -39,13 +39,13 @@ public class Scenario
         Item bread = new Item("bread", "tasty looking bread", 0.5);
         Item book = new Item("book", "an ancient book", 2);
         Item armour1 = new Item("armour", "Silver armour", 5);
-        Item armour2 = new Item("armour", "knight armour", 7.5);
+        Item armour2 = new Item("armour", "Knight armour", 7.5);
         Item armour3 = new Item("armour", "Demon slayer armour", 10);
         Item armour4 = new Item("armour", "Abyssal armour", 7.5);
         Item weapon1 = new Item("sword", "Silver sword",4);
-        Item weapon2 = new Item("sword", "knight sword",6);
-        Item weapon3 = new Item("sword", "Silver sword",8);
-        Item weapon4 = new Item("sword", "Silver sword",10);
+        Item weapon2 = new Item("sword", "Knight sword",6);
+        Item weapon3 = new Item("sword", "Demon slayer sword",8);
+        Item weapon4 = new Item("whip", "Abyssal whip",7);
         
         // put items in the room
         garden.addItem(bread);
