@@ -28,11 +28,11 @@ public class Scenario
         sanctum = new Room("Bitterblack Sanctum");
         corridor = new Room("Corridor of Emptiness, \na strange, dark place");
         fortress = new Room("Fortress of Remembrance");
-        tower1f = new Room("First floor of the Duskmoon Tower." );
+        tower1f = new Room("First floor of the Duskmoon Tower.");
         tower2f = new Room("Second floor of the Duskmoon Tower.");
         
         // create a items
-        Item key1 = new Item("key", "opens vault", 0.01);
+        Item key1 = new Item("key", "Vault key", 0.01);
         Item key2 = new Item("key", "opens shortcut", 0.01);
         Item key3 = new Item ("key", "opens teleporter", 0.01);
         Item key4 = new Item ("key", "opens sanctum", 0.01);
@@ -50,6 +50,7 @@ public class Scenario
         // put items in the room
         garden.addItem(bread);
         cathedral.addItem(book);
+        city.addItem(key1);
         
         // initialise room exits
         new Door(harbor, "east", garden, "west", null);
