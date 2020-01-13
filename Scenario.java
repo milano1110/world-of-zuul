@@ -16,7 +16,7 @@ public class Scenario
      */
     public Scenario()
     {
-        Room harbor, garden, tower, tower1f, tower2f, vault, cathedral, city, sanctum, corridor, fortress;
+        Room harbor, garden, tower, teleporter, tower1f, tower2f, vault, cathedral, city, sanctum, corridor, fortress;
       
         // create the rooms
         harbor = new Room("Bitterblack Harbor");
@@ -30,8 +30,9 @@ public class Scenario
         fortress = new Room("Fortress of Remembrance");
         tower1f = new Room("First floor of the Duskmoon Tower." );
         tower2f = new Room("Second floor of the Duskmoon Tower.");
+        teleporter = new Room("You see a strange door to the east it has a slight blue glow surrounding it,\na do you want to enter it?");
         
-        // create a items
+         // create a items
         Item key1 = new Item("key", "opens vault", 0.01);
         Item key2 = new Item("key", "opens shortcut", 0.01);
         Item key3 = new Item ("key", "opens teleporter", 0.01);
@@ -68,12 +69,9 @@ public class Scenario
         new Door(tower, "up", tower1f, "down", null); 
         new Door(tower1f, "up", tower2f, "down", null);
         
-        new Door(sanctum, "east", corridor, "", key3);
+        new Door(sanctum, "east", teleporter, "west", key3);       
         
-        new Door(corridor, "north", harbor, "", null);
-        new Door(corridor, "east", harbor, "", null);
-        new Door(corridor, "south", harbor, "", null);
-        new Door(corridor, "west", harbor, "", null);
+        new Door(teleporter, "east", harbor, "", null); 
 
         startRoom = harbor;  // start game in the harbor
     }
