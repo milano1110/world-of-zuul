@@ -72,8 +72,6 @@ public class Game
         boolean wantToQuit = false;
         
         CommandWord commandWord = command.getCommandWord();
-        int heal = 0;
-        int damage = 0;
         
         switch (commandWord)
         {
@@ -263,6 +261,7 @@ public class Game
         {
             System.out.println("What do you want to drop?");
         }
+        
         String itemName = command.getSecondWord();
         Item item = player.dropItem(itemName);
         

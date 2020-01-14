@@ -4,7 +4,7 @@ import java.util.List;
  * we can enter in this game.
  * 
  * @author M. Schuringa
- * @version 0.1
+ * @version 0.2
  */
 public class Scenario
 {
