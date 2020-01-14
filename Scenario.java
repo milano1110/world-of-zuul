@@ -32,8 +32,8 @@ public class Scenario
         corridor = new Room("Corridor of Emptiness, a strange, dark place");
         
         // create an item
-        Item key1 = new Item("vaultkey", "Vault key", 0.1);
-        Item key2 = new Item("harborkey", "Harbor key", 0.1);
+        Item key1 = new Item("vaultkey", "Vault key", 0.2);
+        Item key2 = new Item("harborkey", "Harbor key", 0.2);
         Item key3 = new Item ("corridorkey", "Corridor key", 0.1);
         Item key4 = new Item ("sanctumkey", "Sanctum key", 0.1);
         Item bread = new Item("bread", "tasty looking bread", 0.5);
