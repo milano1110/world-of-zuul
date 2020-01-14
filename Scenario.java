@@ -32,14 +32,14 @@ public class Scenario
         corridor = new Room("Corridor of Emptiness, a strange, dark place");
         
          // create a items
-        Item key1 = new Item("vaultkey", "Vault key", 0.1f);
-        Item key2 = new Item("harborkey", "Harbor key", 0.1f);
-        Item key3 = new Item ("corridorkey", "Corridor key", 0.1f);
-        Item key4 = new Item ("sanctumkey", "Sanctum key", 0.1f);
-        Item bread = new Item("bread", "tasty looking bread", 0.5f);
-        Item book = new Item("book", "an ancient book", 2.5f);
-        Item armour = new Item("armour", "Abyssal armour", 7.5f);
-        Item weapon = new Item("whip", "Abyssal whip", 7f);
+        Item key1 = new Item("vaultkey", "Vault key", 0.1);
+        Item key2 = new Item("harborkey", "Harbor key", 0.1);
+        Item key3 = new Item ("corridorkey", "Corridor key", 0.1);
+        Item key4 = new Item ("sanctumkey", "Sanctum key", 0.1);
+        Item bread = new Item("bread", "tasty looking bread", 0.5);
+        Item book = new Item("book", "an ancient book", 2.5);
+        Item armour = new Item("armour", "Abyssal armour", 7.5);
+        Item weapon = new Item("whip", "Abyssal whip", 7);
         
         // put items in the room
         garden.addItem(bread);

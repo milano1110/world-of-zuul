@@ -72,6 +72,8 @@ public class Game
         boolean wantToQuit = false;
         
         CommandWord commandWord = command.getCommandWord();
+        int heal = 0;
+        int damage = 0;
         
         switch (commandWord)
         {
@@ -116,11 +118,11 @@ public class Game
                 break;
             
             case HEAL:
-                heal(command);
+                heal();
                 break;
             
             case DAMAGE:
-                damage(command);
+                damage();
                 break;
         }
         return wantToQuit;
@@ -309,13 +311,13 @@ public class Game
         }
     }
     
-    private void heal(Command command)
+    private void heal()
     {
         player.addHealth(10);
         System.out.println("Your health is: " + player.printHealth());
     }
     
-    private void damage(Command command)
+    private void damage()
     {
         player.removeHealth(10);
         System.out.println("Your health is: " + player.printHealth());
@@ -323,6 +325,7 @@ public class Game
         if (health <= 0)
         {
             System.out.println("You have died.");
+            
         }
     }
 }

@@ -25,6 +25,6 @@ comment8.params=
 comment8.target=java.lang.String\ getShortDescription()
 comment8.text=\r\n\ Return\ a\ string\ listing\ the\ names\ of\ the\ items\ in\ the\ list.\r\n\ @return\ A\ short\ description.\r\n
 comment9.params=
-comment9.target=float\ getTotalWeight()
+comment9.target=double\ getTotalWeight()
 comment9.text=\r\n\ Return\ the\ total\ weight\ of\ the\ items\ in\ the\ list.\r\n\ @return\ The\ total\ weight.\r\n
 numComments=10
