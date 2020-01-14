@@ -89,7 +89,7 @@ public class Room
         String returnString = "";
         if (description.contains("Corridor of Emptiness"))
         {
-            returnString += "You are in the";
+            returnString += "You are in the " + description;
         }
         else
         {

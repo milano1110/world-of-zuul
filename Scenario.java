@@ -16,42 +16,40 @@ public class Scenario
      */
     public Scenario()
     {
-        Room harbor, garden, tower, teleporter, tower1f, tower2f, vault, cathedral, city, sanctum, corridor, fortress;
+        Room harbor, garden, tower, tower1f, tower2f, vault, cathedral, city, sanctum, corridor, fortress;
       
         // create the rooms
         harbor = new Room("Bitterblack Harbor");
         garden = new Room("Garden of Ignominy");
-        tower = new Room("Ground floor of the Duskmoon Tower");
+        fortress = new Room("Fortress of Remembrance");
+        tower = new Room("ground floor of the Duskmoon Tower");
+        tower1f = new Room("first floor of the Duskmoon Tower.");
+        tower2f = new Room("second floor of the Duskmoon Tower.");
         vault = new Room("Vault of Defiled Truth");
         cathedral = new Room("Forsaken Cathedral");
         city = new Room("Fallen City"); 
         sanctum = new Room("Bitterblack Sanctum");
-        corridor = new Room("Corridor of Emptiness, \na strange, dark place");
-        fortress = new Room("Fortress of Remembrance");
-        tower1f = new Room("First floor of the Duskmoon Tower.");
-        tower2f = new Room("Second floor of the Duskmoon Tower.");
-        teleporter = new Room("You see a strange door to the east it has a slight blue glow surrounding it,\na do you want to enter it?");
+        corridor = new Room("Corridor of Emptiness, a strange, dark place");
         
          // create a items
-        Item key1 = new Item("key", "Vault key", 0.01);
-        Item key2 = new Item("key", "opens shortcut", 0.01);
-        Item key3 = new Item ("key", "opens teleporter", 0.01);
-        Item key4 = new Item ("key", "opens sanctum", 0.01);
+        Item key1 = new Item("vkey", "Vault key", 0.01);
+        Item key2 = new Item("hkey", "Harbor key", 0.01);
+        Item key3 = new Item ("ckey", "Corridor key", 0.01);
+        Item key4 = new Item ("skey", "Sanctum key", 0.01);
         Item bread = new Item("bread", "tasty looking bread", 0.5);
         Item book = new Item("book", "an ancient book", 2);
-        Item armour1 = new Item("armour", "Silver armour", 5);
-        Item armour2 = new Item("armour", "Knight armour", 7.5);
-        Item armour3 = new Item("armour", "Demon slayer armour", 10);
-        Item armour4 = new Item("armour", "Abyssal armour", 7.5);
-        Item weapon1 = new Item("sword", "Silver sword",4);
-        Item weapon2 = new Item("sword", "Knight sword",6);
-        Item weapon3 = new Item("sword", "Demon slayer sword",8);
-        Item weapon4 = new Item("whip", "Abyssal whip",7);
+        Item armour = new Item("armour", "Abyssal armour", 7.5);
+        Item weapon = new Item("whip", "Abyssal whip", 7);
         
         // put items in the room
         garden.addItem(bread);
+        tower2f.addItem(key1);
+        vault.addItem(key4);
+        vault.addItem(armour);
+        vault.addItem(weapon);
+        cathedral.addItem(key2);
         cathedral.addItem(book);
-        city.addItem(key1);
+        sanctum.addItem(key3);
         
         // initialise room exits
         new Door(harbor, "east", garden, "west", null);
@@ -62,17 +60,20 @@ public class Scenario
         new Door(city, "east", cathedral, "west", null);
         new Door(city, "west", fortress, "east", null);
         
-        new Door(cathedral, "south", sanctum, "north", key4);
-        
         new Door(fortress, "west", tower, "east", null);
         new Door(fortress, "down", vault, "up", key1);
         
         new Door(tower, "up", tower1f, "down", null); 
         new Door(tower1f, "up", tower2f, "down", null);
         
-        new Door(sanctum, "east", teleporter, "west", key3);       
+        new Door(cathedral, "south", sanctum, "north", key4);
         
-        new Door(teleporter, "east", harbor, "", null); 
+        new Door(sanctum, "east", corridor, "west", key3);       
+        
+        new Door(corridor, "north", harbor, "", null);
+        new Door(corridor, "east", harbor, "", null);
+        new Door(corridor, "south", harbor, "", null);
+        new Door(corridor, "west", harbor, "", null);
 
         startRoom = harbor;  // start game in the harbor
     }
