@@ -9,12 +9,12 @@ public class Item
 {
     private String name;
     private String description;
-    private double weight;
+    private float weight;
     
     /**
      * Creat a new item with the give descriptions and weight.
      */
-    public Item(String name, String description, double weight)
+    public Item(String name, String description, float weight)
     {
         this.name = name;
         this.description = description;
@@ -34,7 +34,7 @@ public class Item
      * Return the item's weight.
      * @return The weight.
      */
-    public double getWeight()
+    public float getWeight()
     {
         return weight;
     }

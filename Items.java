@@ -98,9 +98,9 @@ public class Items
      * Return the total weight of the items in the list.
      * @return The total weight.
      */
-    public double getTotalWeight()
+    public float getTotalWeight()
     {
-        double weight = 0;
+        float weight = 0;
         for (Iterator<Item> iter = items.values().iterator(); iter.hasNext(); )
         {
             weight += iter.next().getWeight();

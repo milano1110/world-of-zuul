@@ -10,7 +10,7 @@ public class Player
     private String name;
     private Room currentRoom;
     private Items items = new Items();
-    private double maxWeight = 20;
+    private float maxWeight = 20;
     private int health;
     private int maxHealth = 20;
     
@@ -236,7 +236,7 @@ public class Player
         }
         else
         {
-            double totalWeight = items.getTotalWeight() + item.getWeight();
+            float totalWeight = items.getTotalWeight() + item.getWeight();
             if (totalWeight > maxWeight)
             {
                 canPick = false;
