@@ -31,7 +31,7 @@ public class Scenario
         sanctum = new Room("Bitterblack Sanctum");
         corridor = new Room("Corridor of Emptiness, a strange, dark place");
         
-         // create a items
+        // create an item
         Item key1 = new Item("vaultkey", "Vault key", 0.1);
         Item key2 = new Item("harborkey", "Harbor key", 0.1);
         Item key3 = new Item ("corridorkey", "Corridor key", 0.1);
