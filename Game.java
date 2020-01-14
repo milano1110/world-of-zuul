@@ -114,6 +114,14 @@ public class Game
             case EAT:
                 eat(command);
                 break;
+            
+            case HEAL:
+                heal(command);
+                break;
+            
+            case DAMAGE:
+                damage(command);
+                break;
         }
         return wantToQuit;
     }
@@ -298,6 +306,23 @@ public class Game
             System.out.println("You ate " + item.getDescription());
             System.out.println("You feel invigorated!");
             printPlayer();
+        }
+    }
+    
+    private void heal(Command command)
+    {
+        player.addHealth(10);
+        System.out.println("Your health is: " + player.printHealth());
+    }
+    
+    private void damage(Command command)
+    {
+        player.removeHealth(10);
+        System.out.println("Your health is: " + player.printHealth());
+        int health = player.getHealth();
+        if (health <= 0)
+        {
+            System.out.println("You have died.");
         }
     }
 }

@@ -8,7 +8,7 @@ import java.util.List;
  */
 public class Scenario
 {
-    private List<Room> rooms;     // List of all rooms in the game
+    //private List<Room> rooms;     // List of all rooms in the game
     private Room startRoom;
 
     /**
