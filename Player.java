@@ -78,6 +78,15 @@ public class Player
     }
     
     /**
+     * Set the name of the player.
+     * @param name Player's name.
+     */
+    public void setName(String name)
+    {
+        this.name = name;
+    }
+    
+    /**
      * Get the name of the player.
      * @return The player's name.
      */
@@ -122,6 +131,16 @@ public class Player
     public void removeHealth(int damage)
     {
         health = health - damage;
+    }
+    
+    public boolean isDead()
+    {
+        boolean dead = false;
+        if (health == 0)
+        {
+            dead = true;
+        }
+        return dead;
     }
     
     /**
@@ -205,16 +224,17 @@ public class Player
     {
         if (itemName.equals("bread"))
         {
-            Item bread = items.get(itemName);
+            Item foodItem = items.get(itemName);
             Item player = items.remove(itemName);
-            if (bread == null)
+            if (foodItem == null)
             {
                 return player;
             }
             
-            if (bread != null)
+            if (foodItem != null)
             {
-                return bread;
+                addHealth(5);
+                return foodItem;
             }
         }
         return null;

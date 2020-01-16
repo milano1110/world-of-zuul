@@ -17,7 +17,8 @@ public class Game
     private Stack<Room> roomHistory;
     private Player player;
     private Scenario scenario;
-        
+    boolean wantToQuit = false;
+    
     /**
      * Create the game and initialise its internal map.
      */
@@ -69,7 +70,7 @@ public class Game
      */
     private boolean processCommand(Command command) 
     {
-        boolean wantToQuit = false;
+        
         
         CommandWord commandWord = command.getCommandWord();
         
@@ -219,6 +220,14 @@ public class Game
         }
     }
     
+    public void quitDead()
+    {
+        if (player.isDead() == true)
+        {
+            wantToQuit = true;
+        }
+    }
+    
     /**
      * Lets the player look around the room
      */
@@ -321,10 +330,10 @@ public class Game
         player.removeHealth(10);
         System.out.println("Your health is: " + player.printHealth());
         int health = player.getHealth();
-        if (health <= 0)
+        if (player.isDead() == true)
         {
             System.out.println("You have died.");
-            
+            quitDead();
         }
     }
 }
