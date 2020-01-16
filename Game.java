@@ -17,7 +17,7 @@ public class Game
     private Stack<Room> roomHistory;
     private Player player;
     private Scenario scenario;
-    boolean wantToQuit = false;
+    private boolean wantToQuit = false;
     
     /**
      * Create the game and initialise its internal map.
