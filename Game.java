@@ -115,6 +115,10 @@ public class Game
             case EAT:
                 eat(command);
                 break;
+              
+            case ABOUT:
+                about();
+                break;
             
             case HEAL:
                 heal();
@@ -218,6 +222,29 @@ public class Game
         {
             return true;  // signal that we want to quit
         }
+    }
+    
+    /**
+     * Gives info about the game.
+     */
+    public void about()
+    {
+        System.out.println("This game was made by M. Schuringa and K. van der Laan");
+        System.out.println("The game is an assignment from the Hanzehogeschool in Groningen");
+        System.out.println("");
+        System.out.println("Bitterblack Isle is a black, bitter, mysterious place.");
+        System.out.println("Countless people have visited this place in hopes of finding something.");
+        System.out.println("Whether on a quest from a king of old or just seeking fame and glory, ");
+        System.out.println("many who venture into the maze have never again seen the light of day.");
+        System.out.println("");
+        System.out.println("Here live unspeakable creatures no one has seen outside its walls.");
+        System.out.println("Bitterblack Isle is also the home for strange plants that can be used to create new curatives; ");
+        System.out.println("ores never seen before lie within rocks littering the entire isle.");
+        System.out.println("");
+        System.out.println("The entrance is marked with an epitaph, a slab of stone etched with stories ");
+        System.out.println("and accounts of other adventurers that have traveled into this forsaken place.");
+        System.out.println("Some of their tales might be of use for those who dare journey these halls.");
+        System.out.println("");
     }
     
     public void quitDead()

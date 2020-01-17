@@ -18,6 +18,7 @@ public class Room
     private String description;
     private HashMap<String, Door> doors;
     private Items items;
+    private NPC npcs;
 
     /**
      * Create a room described "description". Initially, it has
@@ -30,6 +31,7 @@ public class Room
         this.description = description;
         doors = new HashMap<>();
         items = new Items();
+        npcs = new NPC();
     }
     
     /**
@@ -64,7 +66,7 @@ public class Room
         Set<String> keys = doors.keySet();
         for (Iterator<String> iter = keys.iterator(); iter.hasNext(); )
         {
-            returnString += " " + iter.next();
+            returnString += "\n- " + iter.next();
         }
         return returnString;
     }
@@ -79,8 +81,8 @@ public class Room
     
     /**
      * Return a description of the room in the form:
-     *     You are in the kitchen.
-     *     doors: north west
+     *     You are in the harbor.
+     *     Doors: north west
      * 
      * @return A long decription of the room and the doors.
      */
@@ -93,7 +95,16 @@ public class Room
         }
         else
         {
-            returnString = "You are in the " + description + ".\n" + getExitString(); 
+            returnString = "You are in the " + description + "\n" + getExitString(); 
+            if (npcs.noNPC() == true)
+            {
+                returnString += "\nThere are no NPC's in the room.";
+            }
+            else
+            {
+                returnString += ".\n" + npcs.getShortDescription();
+            }
+            
             if (items.empty() == true)
             {
                 returnString += "\nThere are no items in the room.";
@@ -133,5 +144,15 @@ public class Room
     public Item removeItem(String name)
     {
         return items.remove(name);
+    }
+    
+    /**
+     * Add a NPC to the room.
+     * @param name The name of the NPC.
+     * @param description The description of the NPC.
+     */
+    public void addNPC(String name, String description)
+    {
+        npcs.put(name, description);
     }
 }
