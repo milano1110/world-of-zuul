@@ -218,8 +218,8 @@ public class Game
         {
             Room previousRoom = roomHistory.pop();
             player.enterRoom(previousRoom);
-            sounds.doorSound();
             System.out.println(player.getLongDescription());
+            sounds.doorSound();
         }
     }
 
@@ -248,20 +248,20 @@ public class Game
     {
         System.out.println("This game was made by M. Schuringa and K. van der Laan");
         System.out.println("The game is an assignment from the Hanzehogeschool in Groningen");
-        System.out.println("");
+        System.out.println();
         System.out.println("Bitterblack Isle is a black, bitter, mysterious place.");
         System.out.println("Countless people have visited this place in hopes of finding something.");
         System.out.println("Whether on a quest from a king of old or just seeking fame and glory, ");
         System.out.println("many who venture into the maze have never again seen the light of day.");
-        System.out.println("");
+        System.out.println();
         System.out.println("Here live unspeakable creatures no one has seen outside its walls.");
         System.out.println("Bitterblack Isle is also the home for strange plants that can be used to create new curatives; ");
         System.out.println("ores never seen before lie within rocks littering the entire isle.");
-        System.out.println("");
+        System.out.println();
         System.out.println("The entrance is marked with an epitaph, a slab of stone etched with stories ");
         System.out.println("and accounts of other adventurers that have traveled into this forsaken place.");
         System.out.println("Some of their tales might be of use for those who dare journey these halls.");
-        System.out.println("");
+        System.out.println();
     }
     
     public void quitDead()
@@ -297,8 +297,8 @@ public class Game
         }
         else
         {
-            sounds.pickupSound();
             System.out.println("You picked up " + item.getDescription());
+            sounds.pickupSound();
             printPlayer();
         }
     }
@@ -355,8 +355,8 @@ public class Game
         }
         else
         {
-            sounds.eatSound();
             System.out.println("You ate " + item.getDescription());
+            sounds.eatSound();
             System.out.println("You feel invigorated!");
             printPlayer();
         }
@@ -379,8 +379,8 @@ public class Game
         damage += 1;
         
         player.removeHealth(damage);
-        sounds.takedamageSound();
         System.out.println("Your health is: " + player.printHealth());
+        sounds.takedamageSound();
         int health = player.getHealth();
         if (player.isDead() == true)
         {

@@ -36,10 +36,10 @@ public class Scenario
         Item key3 = new Item ("corridorkey", "Corridor key", 0.25);
         Item key4 = new Item ("sanctumkey", "Sanctum key", 0.25);
         Item bread = new Item("bread", "tasty looking bread", 0.5);
-        Item book = new Item("book", "an ancient book", 2.5);
+        Item book = new Item("book", "An ancient book", 2.5);
         Item armour = new Item("armour", "Abyssal armour", 7.5);
         Item weapon = new Item("whip", "Abyssal whip", 7);
-        Item Statue = new Item("statue", "A beautifull statue shaped after a goddess", 50);
+        Item Statue = new Item("statue", "A beautiful statue shaped after a goddess", 50);
         
         // put items in the room
         garden.addItem(bread);
