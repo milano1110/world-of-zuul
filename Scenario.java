@@ -31,10 +31,10 @@ public class Scenario
         corridor = new Room("Corridor of Emptiness, a strange, dark place");
         
         // create an item
-        Item key1 = new Item("vaultkey", "Vault key", 0.2);
-        Item key2 = new Item("harborkey", "Harbor key", 0.2);
-        Item key3 = new Item ("corridorkey", "Corridor key", 0.1);
-        Item key4 = new Item ("sanctumkey", "Sanctum key", 0.1);
+        Item key1 = new Item("vaultkey", "Vault key", 0.25);
+        Item key2 = new Item("harborkey", "Harbor key", 0.25);
+        Item key3 = new Item ("corridorkey", "Corridor key", 0.25);
+        Item key4 = new Item ("sanctumkey", "Sanctum key", 0.25);
         Item bread = new Item("bread", "tasty looking bread", 0.5);
         Item book = new Item("book", "an ancient book", 2.5);
         Item armour = new Item("armour", "Abyssal armour", 7.5);
@@ -74,7 +74,7 @@ public class Scenario
         
         new Door(cathedral, "south", sanctum, "north", key4);
         
-        new Door(sanctum, "east", corridor, "west", key3);       
+        new Door(sanctum, "east", corridor, "", key3);
         /*
         new Door(corridor, "north", harbor, "", null);
         new Door(corridor, "east", harbor, "", null);

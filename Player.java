@@ -31,6 +31,8 @@ public class Player
      * If successful it will return true, if not it will return false.
      * Which could indicate that there is no door or that it is locked 
      * and that you need a key for it.
+     * @param direction The direction that is given.
+     * @return True or false.
      */
     public boolean goThrough(String direction)
     {
@@ -115,6 +117,46 @@ public class Player
         }
     }
     
+    public boolean checkArmour()
+    {
+        boolean armour = false;
+        if (items.getShortDescription().contains("armour"))
+        {
+            armour = true;
+            maxHealth = 30;
+        }
+        else
+        {
+            armour = false;
+            maxHealth = 20;
+            if (health > maxHealth)
+            {
+                health += -10;
+            }
+        }
+        
+        return armour;
+    }
+    
+    public boolean checkWeapon()
+    {
+        boolean weapon = false;
+        if (items.getShortDescription().contains("weapon"))
+        {
+            weapon = true;
+        }
+        else
+        {
+            weapon = false;
+        }
+        return weapon;
+    }
+    
+    public void setMaxHealth(int health)
+    {
+        maxHealth += health;
+    }
+    
     /**
      * Get the current health of the player.
      * @return health The current health.
@@ -131,6 +173,10 @@ public class Player
     public void removeHealth(int damage)
     {
         health = health - damage;
+        if (health < 0)
+        {
+            health = 0;
+        }
     }
     
     public boolean isDead()
@@ -149,6 +195,7 @@ public class Player
      */
     public String printHealth()
     {
+        checkArmour();
         return health + "/" + maxHealth;
     }
     

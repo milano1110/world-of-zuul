@@ -1,8 +1,20 @@
 #BlueJ class context
 comment0.target=Sounds
-comment0.text=\r\n\ Write\ a\ description\ of\ class\ Sounds\ here.\r\n\r\n\ @author\ (your\ name)\r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
+comment0.text=\r\n\ Location\ for\ the\ sounds.\r\n\r\n\ @author\ M.\ Schuringa\r\n\ @version\ 0.1\r\n
 comment1.params=
-comment1.target=void\ doorSound()
-comment2.params=sound
-comment2.target=void\ playSound(java.io.File)
-numComments=3
+comment1.target=Sounds()
+comment2.params=
+comment2.target=void\ doorSound()
+comment3.params=
+comment3.target=void\ eatSound()
+comment4.params=
+comment4.target=void\ takedamageSound()
+comment5.params=
+comment5.target=void\ pickupSound()
+comment6.params=
+comment6.target=void\ teleportSound()
+comment7.params=
+comment7.target=void\ upSound()
+comment8.params=sound
+comment8.target=void\ playSound(java.io.File)
+numComments=9
