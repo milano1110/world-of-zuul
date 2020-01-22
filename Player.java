@@ -12,7 +12,9 @@ public class Player
     private Items items = new Items();
     private double maxWeight = 20;
     private int health;
-    private int maxHealth = 20;
+    private int maxHealth = 100;
+    private int minDamage = 15;
+    private int maxdamage = 21;
     
     /**
      * Initializing the player's name and start room.

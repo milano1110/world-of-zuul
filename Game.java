@@ -124,8 +124,8 @@ public class Game
                 heal();
                 break;
             
-            case DAMAGE:
-                damage();
+            case ATTACK:
+                attack();
                 break;
         }
         return wantToQuit;
@@ -354,7 +354,7 @@ public class Game
         System.out.println("Your health is: " + player.printHealth());
     }
     
-    private void damage()
+    private void attack()
     {
         player.removeHealth(10);
         System.out.println("Your health is: " + player.printHealth());

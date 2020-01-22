@@ -39,9 +39,11 @@ public class Scenario
         Item book = new Item("book", "an ancient book", 2.5);
         Item armour = new Item("armour", "Abyssal armour", 7.5);
         Item weapon = new Item("whip", "Abyssal whip", 7);
+        Item Statue = new Item("statue", "A beautifull statue shaped after a goddess", 50);
         
         // put items in the room
         garden.addItem(bread);
+        garden.addItem(Statue);
         tower2f.addItem(key1);
         vault.addItem(key4);
         vault.addItem(armour);
