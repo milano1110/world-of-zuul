@@ -1,4 +1,5 @@
 import java.util.Stack;
+import java.util.Random;
 /**
  *  To play this game, create an instance of this class and call the "play"
  *  method.
@@ -18,6 +19,7 @@ public class Game
     private Player player;
     private Scenario scenario;
     private boolean wantToQuit = false;
+    private Sounds sounds = new Sounds();
     
     /**
      * Create the game and initialise its internal map.
@@ -59,6 +61,7 @@ public class Game
         System.out.println("Welcome " + player.getName() + ", to the Bitterblack Isle.");
         System.out.println("The Bitterblack Isle is a remote island off the shore of the mainland");
         System.out.println("Type '" + CommandWord.HELP + "' if you need help.");
+        System.out.println("Type '" + CommandWord.ABOUT + "' if you want to know more about the game.");
         System.out.println();
         System.out.println(player.getLongDescription());
     }
@@ -70,8 +73,6 @@ public class Game
      */
     private boolean processCommand(Command command) 
     {
-        
-        
         CommandWord commandWord = command.getCommandWord();
         
         switch (commandWord)
@@ -174,8 +175,21 @@ public class Game
             roomHistory.push(player.getCurrentRoom());
             if (player.goThrough(direction))
             {
-                Sounds sounds = new Sounds();
-                sounds.doorSound();
+                if (player.getCurrentRoom().getShortDescription().contains("Corridor"))
+                {
+                    sounds.teleportSound();
+                }
+                else
+                {
+                    if (direction == "up" || direction == "down")
+                    {
+                        sounds.upSound();
+                    }
+                    else
+                    {
+                        sounds.doorSound();
+                    }
+                }
                 System.out.println(player.getLongDescription());
             }
             else
@@ -204,6 +218,7 @@ public class Game
         {
             Room previousRoom = roomHistory.pop();
             player.enterRoom(previousRoom);
+            sounds.doorSound();
             System.out.println(player.getLongDescription());
         }
     }
@@ -251,10 +266,7 @@ public class Game
     
     public void quitDead()
     {
-        if (player.isDead() == true)
-        {
-            wantToQuit = true;
-        }
+        wantToQuit = true;
     }
     
     /**
@@ -285,6 +297,7 @@ public class Game
         }
         else
         {
+            sounds.pickupSound();
             System.out.println("You picked up " + item.getDescription());
             printPlayer();
         }
@@ -342,6 +355,7 @@ public class Game
         }
         else
         {
+            sounds.eatSound();
             System.out.println("You ate " + item.getDescription());
             System.out.println("You feel invigorated!");
             printPlayer();
@@ -350,13 +364,22 @@ public class Game
     
     private void heal()
     {
-        player.addHealth(10);
+        Random rand = new Random();
+        int heal = rand.nextInt(10);
+        heal += 1;
+        
+        player.addHealth(heal);
         System.out.println("Your health is: " + player.printHealth());
     }
     
     private void attack()
     {
-        player.removeHealth(10);
+        Random rand = new Random();
+        int damage = rand.nextInt(10);
+        damage += 1;
+        
+        player.removeHealth(damage);
+        sounds.takedamageSound();
         System.out.println("Your health is: " + player.printHealth());
         int health = player.getHealth();
         if (player.isDead() == true)
