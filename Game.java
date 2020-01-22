@@ -174,6 +174,8 @@ public class Game
             roomHistory.push(player.getCurrentRoom());
             if (player.goThrough(direction))
             {
+                Sounds sounds = new Sounds();
+                sounds.doorSound();
                 System.out.println(player.getLongDescription());
             }
             else
