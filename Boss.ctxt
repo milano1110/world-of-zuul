@@ -1,18 +1,24 @@
 #BlueJ class context
 comment0.target=Boss
-comment0.text=\r\n\ A\ list\ of\ NPC's.\r\n\r\n\ @author\ M.\ Schuringa\r\n\ @version\ 0.1\r\n
+comment0.text=\r\n\ A\ list\ of\ bosses.\r\n\r\n\ @author\ M.\ Schuringa\r\n\ @version\ 0.1\r\n
 comment1.params=
 comment1.target=Boss()
 comment2.params=
 comment2.target=java.util.Iterator\ iterator()
+comment2.text=\r\n\ Return\ an\ Iterator\ over\ the\ bosses.\r\n\ @return\ An\ Iterator\r\n
 comment3.params=name
-comment3.target=Stats\ removeItem(java.lang.String)
+comment3.target=Stats\ removeBoss(java.lang.String)
+comment3.text=\r\n\ Remove\ the\ given\ boss\r\n\ @param\ name\ The\ name\ of\ the\ boss\ to\ be\ removed.\r\n
 comment4.params=
 comment4.target=boolean\ noBoss()
+comment4.text=\r\n\ Checks\ if\ there\ is\ an\ boss\ in\ the\ list.\r\n\ @return\ True\ if\ it\ is\ empty.\r\n
 comment5.params=name\ value
 comment5.target=void\ putBoss(java.lang.String,\ Stats)
+comment5.text=\r\n\ Put\ the\ given\ boss\ in\ the\ list.\r\n\ @param\ name\ The\ name\ of\ the\ boss.\r\n\ @param\ value\ The\ boss.\r\n
 comment6.params=name
 comment6.target=Stats\ getBoss(java.lang.String)
+comment6.text=\r\n\ Return\ the\ boss\ with\ the\ given\ name\r\n\ @param\ name\ The\ name\ of\ the\ boss\ to\ return.\r\n\ @return\ The\ named\ boss,\ or\ null\ if\ it\ is\ not\ in\ the\ list.\r\n
 comment7.params=
 comment7.target=java.lang.String\ getDescription()
+comment7.text=\r\n\ Return\ a\ string\ listing\ the\ names\ of\ the\ bosses\ in\ the\ list.\r\n\ @return\ The\ description.\r\n
 numComments=8

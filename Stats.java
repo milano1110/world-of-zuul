@@ -1,9 +1,9 @@
 import java.util.Random;
 /**
- * Write a description of class BossStats here.
+ * The stats for the boss.
  *
- * @author (your name)
- * @version (a version number or a date)
+ * @author M. Schuringa
+ * @version 0.1
  */
 public class Stats
 {
@@ -19,31 +19,55 @@ public class Stats
         this.item = item;
     }
     
+    /**
+     * Getter for the name of the boss.
+     * @return The name.
+     */
     public String getName()
     {
         return name;
     }
     
+    /**
+     * Getter for the current health of the boss.
+     * @return The current health.
+     */
     public int getHealth()
     {
         return health;
     }
     
+    /**
+     * Getter for the max health of the boss.
+     * @return The max health.
+     */
     public int getMaxHealth()
     {
         return maxHealth;
     }
     
+    /**
+     * Getter for the item of the boss.
+     * @return The item.
+     */
     public Item getItem()
     {
         return item;
     }
     
+    /**
+     * Getter for the description of the boss.
+     * @return The description.
+     */
     public String getDescription()
     {
-        return "Name: " + name + "\nHealth: " + health + "/" + maxHealth;
+        return "Name: " + name + "\nHealth: " + printHealth();
     }
     
+    /**
+     * Checks if the boss is dead.
+     * @return True if dead.
+     */
     public boolean isDead()
     {
         boolean dead = false;
@@ -54,6 +78,19 @@ public class Stats
         return dead;
     }
     
+    /**
+     * Prints the health string of the boss in the form currenthealth/maxhealth.
+     * @return The health of the boss.
+     */
+    public String printHealth()
+    {
+        return health + "/" + maxHealth;
+    }
+    
+    /**
+     * Damages the health of the boss.
+     * @param damage The damage dealt.
+     */
     public void removeHealth(int damage)
     {
         health = health - damage;
@@ -63,7 +100,11 @@ public class Stats
         }
     }
     
-    public int bossAttack()
+    /**
+     * The damage that the boss deals.
+     * @return The damage.
+     */
+    public int damage()
     {
         Random rand = new Random();
         int low = 15;

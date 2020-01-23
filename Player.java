@@ -164,11 +164,6 @@ public class Player
         return weapon;
     }
     
-    public void setMaxHealth(int health)
-    {
-        maxHealth += health;
-    }
-    
     /**
      * Get the current health of the player.
      * @return The current health.
@@ -361,12 +356,16 @@ public class Player
         return canPick;
     }
     
+    /**
+     * 
+     * @param bossName The name of the boss to be attacked.
+     * @return The name of the boss.
+     */
     public Stats attack(String bossName)
     {
-        if (bossName.equals("Demonlord"))
+        if (bossName.equals("demon"))
         {
             Stats stats = currentRoom.getBoss(bossName);
-            
             if (stats != null)
             {
                 return stats;
@@ -376,8 +375,8 @@ public class Player
     }
     
     /**
-     * 
-     * @return The damage number that the player deals.
+     * Damage that the player deals.
+     * @return The damage 
      */
     public int damage()
     {

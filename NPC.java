@@ -85,11 +85,11 @@ public class NPC
      */
     public String getLongDescription()
     {
-        String returnString = "NPC's: ";
+        String returnString = "";
         Iterator iter = npcs.values().iterator();
         while (iter.hasNext())
         {
-            returnString += "- " + iter.next() + "\n";
+            returnString += " " + iter.next();
         }
         return returnString;
     }

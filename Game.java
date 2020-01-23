@@ -144,10 +144,6 @@ public class Game
             case READ:
                 read(command);
                 break;
-                
-            case DAMAGE:
-                damage();
-                break;
         }
         return wantToQuit;
     }
@@ -183,7 +179,6 @@ public class Game
 
         String direction = command.getSecondWord();
 
-        // Try to leave current room.
         Door door = player.getCurrentRoom().getDoor(direction);
         
         if (door == null) 
@@ -192,30 +187,37 @@ public class Game
         }
         else 
         {
-            roomHistory.push(player.getCurrentRoom());
-            if (player.goThrough(direction))
+            if (!player.getCurrentRoom().getBosses().noBoss())
             {
-                System.out.println(player.getLongDescription());
-                if (player.getCurrentRoom().getShortDescription().contains("Corridor"))
-                {
-                    sounds.teleportSound();
-                }
-                else
-                {
-                    if (door.getDirection1() == "up" || door.getDirection2() == "down" || door.getDirection1() == "down" || door.getDirection2() == "up")
-
-                    {
-                        sounds.upSound();
-                    }
-                    else 
-                    {
-                        sounds.doorSound();
-                    }
-                }
+                System.out.println("The demon blocks the exit!");
             }
             else
             {
-                System.out.println("The door is locked and you don't have the key for it.");
+                roomHistory.push(player.getCurrentRoom());
+                if (player.goThrough(direction))
+                {
+                    System.out.println(player.getLongDescription());
+                    if (player.getCurrentRoom().getShortDescription().contains("Corridor"))
+                    {
+                        sounds.teleportSound();
+                    }
+                    else
+                    {
+                        if (door.getDirection1() == "up" || door.getDirection2() == "down" || door.getDirection1() == "down" || door.getDirection2() == "up")
+    
+                        {
+                            sounds.upSound();
+                        }
+                        else 
+                        {
+                            sounds.doorSound();
+                        }
+                    }
+                }
+                else
+                {
+                    System.out.println("The door is locked and you don't have the key for it.");
+                }
             }
         }
     }
@@ -237,10 +239,17 @@ public class Game
         }
         else
         {
-            Room previousRoom = roomHistory.pop();
-            player.enterRoom(previousRoom);
-            System.out.println(player.getLongDescription());
-            sounds.doorSound();
+            if (!player.getCurrentRoom().getBosses().noBoss())
+            {
+                System.out.println("The demon blocks the exit!");
+            }
+            else
+            {
+                Room previousRoom = roomHistory.pop();
+                player.enterRoom(previousRoom);
+                System.out.println(player.getLongDescription());
+                sounds.doorSound();
+            }
         }
     }
 
@@ -437,10 +446,17 @@ public class Game
         }
         else
         {
-            player.addHealth(heal);
-            System.out.println("You drank a health potion.");
-            System.out.println("Your health is: " + player.printHealth());
-            sounds.drinkSound();
+            if (!player.getCurrentRoom().getBosses().noBoss())
+            {
+                System.out.println("Something prevents you from healing.");
+            }
+            else
+            {
+                player.addHealth(heal);
+                System.out.println("You drank a health potion.");
+                System.out.println("Your health is: " + player.printHealth());
+                sounds.drinkSound();
+            }
         }
     }
     
@@ -457,30 +473,32 @@ public class Game
         
         String bossName = command.getSecondWord();
         Stats stats = player.attack(bossName);
-        int damage = player.damage();
+        
         if (stats == null)
         {
             System.out.println("Could not attack " + bossName);
         }
         else
         {
-            stats.removeHealth(damage);
-            System.out.println("Your health is: " + player.printHealth());
-        }
-    }
-    
-    /**
-     * Test health.
-     */
-    public void damage()
-    {
-        Random rand = new Random();
-        int low = 10;
-        int high = 21;
-        int damagePlayer = rand.nextInt(high-low) + low;
+            int playerDamage = player.damage();
+            int bossDamage = stats.damage();
         
-        player.removeHealth(damagePlayer);
-        System.out.println("Your health is: " + player.printHealth());
-        sounds.takedamageSound();
+            stats.removeHealth(playerDamage);
+            System.out.println("You hit the boss for " + playerDamage + " damage!");
+            System.out.println("The " + bossName + "'s health is: " + stats.printHealth());
+            if (stats.isDead())
+            {
+                System.out.println("The " + bossName + " is dead.");
+                player.getCurrentRoom().removeBoss(bossName);
+                player.getCurrentRoom().addItem(stats.getItem());
+            }
+            else
+            {
+                System.out.println();
+                player.removeHealth(bossDamage);
+                System.out.println("The " + bossName + " hit you for " + bossDamage + " damage!");
+                System.out.println("Your health is: " + player.printHealth());
+            }
+        }
     }
 }

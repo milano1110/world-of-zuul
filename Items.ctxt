@@ -12,6 +12,7 @@ comment3.target=Item\ removeItem(java.lang.String)
 comment3.text=\r\n\ Remove\ the\ given\ item\r\n\ @param\ name\ The\ name\ of\ the\ item\ to\ be\ removed.\r\n
 comment4.params=
 comment4.target=boolean\ noItem()
+comment4.text=\r\n\ Checks\ if\ there\ is\ an\ item\ in\ the\ list.\r\n\ @return\ True\ if\ it\ is\ empty.\r\n
 comment5.params=name\ value
 comment5.target=void\ putItem(java.lang.String,\ Item)
 comment5.text=\r\n\ Put\ the\ given\ item\ in\ the\ list.\r\n\ @param\ name\ The\ name\ of\ the\ item.\r\n\ @param\ value\ The\ item.\r\n

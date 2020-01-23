@@ -40,11 +40,13 @@ public class Scenario
         Item armour = new Item("armour", "Abyssal armour", 10);
         Item weapon = new Item("whip", "Abyssal whip", 4);
         Item statue = new Item("statue", "a beautiful statue shaped after a goddess", 50);
+        Item pillar = new Item("pillar", "4 giant stone pillars with glowing orbs" , 150); //Eva made this
         Item stone = new Item("stone", "Victory Stone", 1.5);
         
         // put items in the room
         garden.addItem(bread);
         garden.addItem(statue);
+        garden.addItem(pillar);
         
         tower2f.addItem(key1);
         
@@ -60,19 +62,21 @@ public class Scenario
         corridor.addItem(stone);
         
         // set boss
-        Stats boss = new Stats("Demon lord", key3);
+        Stats boss = new Stats("demon", key3);
         
         // put NPC's in the room
-        harbor.addNPC("Fisherman", "A friendly fisherman");
+        harbor.addNPC("Fisherman", "a friendly fisherman");
         
-        tower2f.addNPC("King", "The King of the fortress");
+        tower2f.addNPC("King", "the King of the fortress");
+        
+        garden.addNPC("Ayalin", "a young woman drawing the statue");
         
         sanctum.addBoss(boss);
         
         // initialise room exits
         new Door(harbor, "east", garden, "west", null);
         new Door(harbor, "south", fortress, "north", key2);
-        new Door(harbor, "north", sanctum, "south", null);
+        //new Door(harbor, "north", sanctum, "south", null);
         
         new Door(garden, "south", city, "north", null);
         

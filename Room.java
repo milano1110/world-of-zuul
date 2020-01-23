@@ -92,7 +92,7 @@ public class Room
         String returnString = "";
         if (description.contains("Corridor of Emptiness"))
         {
-            returnString += "You are in the " + description;
+            returnString += "You are in the " + description + "\nItems in the room: " + items.getLongDescription();
         }
         else
         {
@@ -103,7 +103,7 @@ public class Room
             }
             else
             {
-                returnString += ".\n" + npcs.getShortDescription();
+                returnString += ".\n" + npcs.getShortDescription() + "," + npcs.getLongDescription();
             }
             
             if (items.noItem())
@@ -162,13 +162,37 @@ public class Room
         npcs.putNPC(name, description);
     }
     
+    /**
+     * Puts an boss in the room.
+     * @param stats The boss put into the room.
+     */
     public void addBoss(Stats stats)
     {
         boss.putBoss(stats.getName(), stats);
     }
     
+    /**
+     * Returns the boss if it is available, otherwise it returns null.
+     * @param name The name of the boss to be returned.
+     * @return The name of the boss, or null if it is not in the room.
+     */
     public Stats getBoss(String name)
     {
         return boss.getBoss(name);
+    }
+    
+    public Boss getBosses()
+    {
+        return boss;
+    }
+    
+    /**
+     * Removes and returns the boss if it is available, otherwise returns null.
+     * @param name The boss to be removed.
+     * @return The boss if removed, otherwise null.
+     */
+    public Stats removeBoss(String name)
+    {
+        return boss.removeBoss(name);
     }
 }

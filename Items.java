@@ -36,6 +36,10 @@ public class Items
         return items.remove(name);
     }
     
+    /**
+     * Checks if there is an item in the list.
+     * @return True if it is empty.
+     */
     public boolean noItem()
     {
         boolean noItem = false;
