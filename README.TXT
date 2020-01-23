@@ -1,5 +1,5 @@
 ﻿Project: bitterblack isle
-Authors: M. Schuringa
+Authors: M. Schuringa and K. van der Laan
 
 This project is based of the world of zuul game described in chapter 8
 of the book 'Objects First with Java' and is made with Bluej.
