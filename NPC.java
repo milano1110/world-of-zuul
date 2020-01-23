@@ -47,7 +47,7 @@ public class NPC
      */
     public void addItem(Item item)
     {
-        items.put(item.getName(), item);
+        items.putItem(item.getName(), item);
     }
     
     public boolean noNPC()
@@ -99,7 +99,7 @@ public class NPC
      * @param name The name of the NPC.
      * @param description The description of the NPC.
      */
-    public void put(String name, String description)
+    public void putNPC(String name, String description)
     {
         npcs.put(name, description);
     }

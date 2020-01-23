@@ -31,19 +31,19 @@ public class Items
      * Remove the given item
      * @param name The name of the item to be removed.
      */
-    public Item remove(String name)
+    public Item removeItem(String name)
     {
         return items.remove(name);
     }
     
-    public boolean empty()
+    public boolean noItem()
     {
-        boolean invEmpty = false;
+        boolean noItem = false;
         if (items.isEmpty())
         {
-            invEmpty = true;
+            noItem = true;
         }
-        return invEmpty;
+        return noItem;
     }
     
     /**
@@ -51,7 +51,7 @@ public class Items
      * @param name The name of the item.
      * @param value The item.
      */
-    public void put(String name, Item value)
+    public void putItem(String name, Item value)
     {
         items.put(name, value);
     }
@@ -61,7 +61,7 @@ public class Items
      * @param name The name of the item to return.
      * @return The named item, or null if it is not in the list.
      */
-    public Item get(String name)
+    public Item getItem(String name)
     {
         return items.get(name);
     }

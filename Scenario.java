@@ -55,17 +55,24 @@ public class Scenario
         cathedral.addItem(key2);
         cathedral.addItem(book);
         
-        sanctum.addItem(key3);
+        //sanctum.addItem(key3);
         
         corridor.addItem(stone);
         
+        // set boss
+        Stats boss = new Stats("Demon lord", key3);
+        
         // put NPC's in the room
         harbor.addNPC("Fisherman", "A friendly fisherman");
+        
         tower2f.addNPC("King", "The King of the fortress");
+        
+        sanctum.addBoss(boss);
         
         // initialise room exits
         new Door(harbor, "east", garden, "west", null);
         new Door(harbor, "south", fortress, "north", key2);
+        new Door(harbor, "north", sanctum, "south", null);
         
         new Door(garden, "south", city, "north", null);
         

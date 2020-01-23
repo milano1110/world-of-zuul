@@ -231,7 +231,7 @@ public class Player
     public String getPlayer()
     {
         String returnString = "Your current health is: " + printHealth() +"\nYour total weight: " + items.getTotalWeight();
-        if (items.empty() == true)
+        if (items.noItem() == true)
         {
             returnString += "\nYour inventory is empty.";
         }
@@ -263,7 +263,7 @@ public class Player
         if (canPickItem(itemName))
         {
             Item item = currentRoom.removeItem(itemName);
-            items.put(itemName, item);
+            items.putItem(itemName, item);
             return item;
         }
         else
@@ -279,7 +279,7 @@ public class Player
      */
     public Item dropItem(String itemName)
     {
-        Item item = items.remove(itemName);
+        Item item = items.removeItem(itemName);
         if (item != null)
         {
             currentRoom.addItem(item);
@@ -296,8 +296,8 @@ public class Player
     {
         if (itemName.equals("bread"))
         {
-            Item foodItem = items.get(itemName);
-            Item player = items.remove(itemName);
+            Item foodItem = items.getItem(itemName);
+            Item player = items.removeItem(itemName);
             if (foodItem == null)
             {
                 return player;
@@ -321,8 +321,8 @@ public class Player
     {
         if (itemName.equals("book"))
         {
-            Item readItem = items.get(itemName);
-            Item player = items.remove(itemName);
+            Item readItem = items.getItem(itemName);
+            Item player = items.removeItem(itemName);
             if (readItem == null)
             {
                 return player;
@@ -361,29 +361,34 @@ public class Player
         return canPick;
     }
     
+    public Stats attack(String bossName)
+    {
+        if (bossName.equals("Demonlord"))
+        {
+            Stats stats = currentRoom.getBoss(bossName);
+            
+            if (stats != null)
+            {
+                return stats;
+            }
+        }
+        return null;
+    }
+    
     /**
      * 
      * @return The damage number that the player deals.
      */
-    private int playerAttack()
+    public int damage()
     {
         int low = 10;
         int high = 21;
-        int damagePlayer = rand.nextInt(high-low) + low;
+        int damage = rand.nextInt(high-low) + low;
         
         if (items.getShortDescription().contains("whip"))
         {
-            damagePlayer += 10;
+            damage += 10;
         }
-        return damagePlayer;
-    }
-    
-    private int bossAttack()
-    {
-        int low = 15;
-        int high = 26;
-        int damageBoss = rand.nextInt(high-low) + low;
-        
-        return damageBoss;
+        return damage;
     }
 }

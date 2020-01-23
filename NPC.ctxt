@@ -23,6 +23,6 @@ comment8.params=
 comment8.target=java.lang.String\ getLongDescription()
 comment8.text=\r\n\ Get\ a\ long\ description\ of\ the\ NPC's\ in\ the\ room\ in\ the\ form\:\r\n\ \ \ \ \ \ NPC's\:\ \r\n\ \ \ \ \ \ -\ A\ friendly\ fishermen\r\n\ @return\ The\ descriptions\ of\ the\ NPC\ in\ the\ room.\r\n
 comment9.params=name\ description
-comment9.target=void\ put(java.lang.String,\ java.lang.String)
+comment9.target=void\ putNPC(java.lang.String,\ java.lang.String)
 comment9.text=\r\n\ Put\ a\ NPC\ in\ the\ list.\r\n\ @param\ name\ The\ name\ of\ the\ NPC.\r\n\ @param\ description\ The\ description\ of\ the\ NPC.\r\n
 numComments=10

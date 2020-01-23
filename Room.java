@@ -19,7 +19,7 @@ public class Room
     private HashMap<String, Door> doors;
     private Items items;
     private NPC npcs;
-
+    private Boss boss;
     /**
      * Create a room described "description". Initially, it has
      * no doors. "description" is something like "a kitchen" or
@@ -32,6 +32,7 @@ public class Room
         doors = new HashMap<>();
         items = new Items();
         npcs = new NPC();
+        boss = new Boss();
     }
     
     /**
@@ -96,7 +97,7 @@ public class Room
         else
         {
             returnString = "You are in the " + description + "\n" + getExitString(); 
-            if (npcs.noNPC() == true)
+            if (npcs.noNPC())
             {
                 returnString += "\nThere are no NPC's in the room.";
             }
@@ -105,13 +106,18 @@ public class Room
                 returnString += ".\n" + npcs.getShortDescription();
             }
             
-            if (items.empty() == true)
+            if (items.noItem())
             {
                 returnString += "\nThere are no items in the room.";
             }
             else
             {
                 returnString += "\nItems in the room: " + items.getLongDescription();
+            }
+            
+            if (!boss.noBoss())
+            {
+                returnString += "\nWatch out! The boss is here." + boss.getDescription();
             }
         }
         return returnString;
@@ -123,7 +129,7 @@ public class Room
      */
     public void addItem(Item item)
     {
-        items.put(item.getName(), item);
+        items.putItem(item.getName(), item);
     }
     
     /**
@@ -133,7 +139,7 @@ public class Room
      */
     public Item getItem(String name)
     {
-        return items.get(name);
+        return items.getItem(name);
     }
     
     /**
@@ -143,7 +149,7 @@ public class Room
      */
     public Item removeItem(String name)
     {
-        return items.remove(name);
+        return items.removeItem(name);
     }
     
     /**
@@ -153,6 +159,16 @@ public class Room
      */
     public void addNPC(String name, String description)
     {
-        npcs.put(name, description);
+        npcs.putNPC(name, description);
+    }
+    
+    public void addBoss(Stats stats)
+    {
+        boss.putBoss(stats.getName(), stats);
+    }
+    
+    public Stats getBoss(String name)
+    {
+        return boss.getBoss(name);
     }
 }

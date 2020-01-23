@@ -19,7 +19,6 @@ public class Game
     private Player player;
     private Scenario scenario;
     private Sounds sounds = new Sounds();
-    private Random rand = new Random();
     
     /**
      * Create the game and initialise its internal map.
@@ -427,6 +426,7 @@ public class Game
      */
     private void heal()
     {
+        Random rand = new Random();
         int low = 10;
         int high = 21;
         int heal = rand.nextInt(high-low) + low;
@@ -449,23 +449,32 @@ public class Game
      */
     private void attack(Command command)
     {
-        
         if (!command.hasSecondWord())
         {
             System.out.println("Who do you want to attack?");
+            return;
         }
         
         String bossName = command.getSecondWord();
-        
-        System.out.println("Your health is: " + player.printHealth());
+        Stats stats = player.attack(bossName);
+        int damage = player.damage();
+        if (stats == null)
+        {
+            System.out.println("Could not attack " + bossName);
+        }
+        else
+        {
+            stats.removeHealth(damage);
+            System.out.println("Your health is: " + player.printHealth());
+        }
     }
     
     /**
      * Test health.
      */
-    
     public void damage()
     {
+        Random rand = new Random();
         int low = 10;
         int high = 21;
         int damagePlayer = rand.nextInt(high-low) + low;
