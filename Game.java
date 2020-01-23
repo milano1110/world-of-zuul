@@ -145,6 +145,10 @@ public class Game
             case READ:
                 read(command);
                 break;
+                
+            case DAMAGE:
+                damage();
+                break;
         }
         return wantToQuit;
     }
@@ -427,11 +431,17 @@ public class Game
         int high = 21;
         int heal = rand.nextInt(high-low) + low;
         
-        player.addHealth(heal);
-        
-        System.out.println("You drank a health potion.");
-        System.out.println("Your health is: " + player.printHealth());
-        sounds.drinkSound();
+        if (player.getHealth() == player.getMaxHealth())
+        {
+            System.out.println("Can't drink the potion, your health is full.");
+        }
+        else
+        {
+            player.addHealth(heal);
+            System.out.println("You drank a health potion.");
+            System.out.println("Your health is: " + player.printHealth());
+            sounds.drinkSound();
+        }
     }
     
     /**
@@ -439,6 +449,7 @@ public class Game
      */
     private void attack(Command command)
     {
+        
         if (!command.hasSecondWord())
         {
             System.out.println("Who do you want to attack?");
@@ -447,5 +458,20 @@ public class Game
         String bossName = command.getSecondWord();
         
         System.out.println("Your health is: " + player.printHealth());
+    }
+    
+    /**
+     * Test health.
+     */
+    
+    public void damage()
+    {
+        int low = 10;
+        int high = 21;
+        int damagePlayer = rand.nextInt(high-low) + low;
+        
+        player.removeHealth(damagePlayer);
+        System.out.println("Your health is: " + player.printHealth());
+        sounds.takedamageSound();
     }
 }

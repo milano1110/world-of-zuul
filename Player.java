@@ -171,11 +171,20 @@ public class Player
     
     /**
      * Get the current health of the player.
-     * @return health The current health.
+     * @return The current health.
      */
     public int getHealth()
     {
         return health;
+    }
+    
+    /**
+     * Get the max health of the player.
+     * @return The max health.
+     */
+    public int getMaxHealth()
+    {
+        return maxHealth;
     }
     
     /**
