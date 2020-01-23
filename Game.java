@@ -199,7 +199,7 @@ public class Game
                 }
                 else
                 {
-                    if (direction == "up" || direction == "down")
+                    if (direction == "UP" || direction == "DOWN")
                     {
                         sounds.upSound();
                     }
