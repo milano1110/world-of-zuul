@@ -8,7 +8,8 @@
 public enum CommandWord
 {
     GO("go"), QUIT("quit"), HELP("help"), LOOK("look"), BACK("back"), TAKE("take"), 
-    DROP("drop"), EAT("eat"), PLAYER("player"), UNKNOWN("?"), ABOUT("about"), HEAL("heal"), ATTACK("attack");
+    DROP("drop"), EAT("eat"), PLAYER("player"), UNKNOWN("?"), ABOUT("about"), HEAL("heal"), 
+    ATTACK("attack"), TALK("talk"), READ("read");
     
     private String commandString;
     

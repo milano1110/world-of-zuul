@@ -18,8 +18,8 @@ public class Game
     private Stack<Room> roomHistory;
     private Player player;
     private Scenario scenario;
-    private boolean wantToQuit = false;
     private Sounds sounds = new Sounds();
+    private Random rand = new Random();
     
     /**
      * Create the game and initialise its internal map.
@@ -48,6 +48,17 @@ public class Game
         {
             Command command = parser.getCommand();
             finished = processCommand(command);
+            if (player.isDead())
+            {
+                printDead();
+                finished = true;
+            }
+            
+            if (player.getPlayer().contains("Victory Stone"))
+            {
+                printVictory();
+                finished = true;
+            }
         }
         System.out.println("Thank you for playing.  Good bye.");
     }
@@ -73,6 +84,8 @@ public class Game
      */
     private boolean processCommand(Command command) 
     {
+        boolean wantToQuit = false;
+        
         CommandWord commandWord = command.getCommandWord();
         
         switch (commandWord)
@@ -126,7 +139,11 @@ public class Game
                 break;
             
             case ATTACK:
-                attack();
+                attack(command);
+                break;
+                
+            case READ:
+                read(command);
                 break;
         }
         return wantToQuit;
@@ -175,6 +192,7 @@ public class Game
             roomHistory.push(player.getCurrentRoom());
             if (player.goThrough(direction))
             {
+                System.out.println(player.getLongDescription());
                 if (player.getCurrentRoom().getShortDescription().contains("Corridor"))
                 {
                     sounds.teleportSound();
@@ -190,7 +208,6 @@ public class Game
                         sounds.doorSound();
                     }
                 }
-                System.out.println(player.getLongDescription());
             }
             else
             {
@@ -244,7 +261,7 @@ public class Game
     /**
      * Gives info about the game.
      */
-    public void about()
+    private void about()
     {
         System.out.println("This game was made by M. Schuringa and K. van der Laan");
         System.out.println("The game is an assignment from the Hanzehogeschool in Groningen");
@@ -264,9 +281,20 @@ public class Game
         System.out.println();
     }
     
-    public void quitDead()
+    /**
+     * Prints dead message.
+     */
+    private void printDead()
     {
-        wantToQuit = true;
+        System.out.println("\nYou have lost the game.");
+    }
+    
+    /**
+     * Prints victory message.
+     */
+    private void printVictory()
+    {
+        System.out.println("\nYou have won the game. Congratulations!");
     }
     
     /**
@@ -311,6 +339,7 @@ public class Game
         if (!command.hasSecondWord())
         {
             System.out.println("What do you want to drop?");
+            return;
         }
         
         String itemName = command.getSecondWord();
@@ -362,30 +391,62 @@ public class Game
         }
     }
     
+    /**
+     * Try to read an item from your inventory.
+     * If the item is in your inventory and readable, read it.
+     */
+    private void read(Command command)
+    {
+        if (!command.hasSecondWord())
+        {
+            System.out.println("What do you want to read?");
+            return;
+        }
+        
+        String itemName = command.getSecondWord();
+        Item item = player.read(itemName);
+        if (item == null)
+        {
+            System.out.println("Could not read the " + itemName);
+        }
+        else
+        {
+            System.out.println("You tried to read " + item.getDescription());
+            System.out.println("But it was too old and the pages crumbled.");
+            printPlayer();
+        }
+    }
+    
+    /**
+     * Heals the player for a random amount between 10 and 20.
+     */
     private void heal()
     {
-        Random rand = new Random();
-        int heal = rand.nextInt(10);
-        heal += 1;
+        int low = 10;
+        int high = 21;
+        int heal = rand.nextInt(high-low) + low;
         
         player.addHealth(heal);
         System.out.println("Your health is: " + player.printHealth());
     }
     
-    private void attack()
+    /**
+     * Damages the player for a random amount between 10 and 20.
+     */
+    private void attack(Command command)
     {
-        Random rand = new Random();
-        int damage = rand.nextInt(10);
-        damage += 1;
+        int low = 10;
+        int high = 21;
+        int damage = rand.nextInt(high-low) + low;
+        
+        if (!command.hasSecondWord())
+        {
+            System.out.println("Who do you want to attack?");
+        }
         
         player.removeHealth(damage);
         System.out.println("Your health is: " + player.printHealth());
         sounds.takedamageSound();
-        int health = player.getHealth();
-        if (player.isDead() == true)
-        {
-            System.out.println("You have died.");
-            quitDead();
-        }
+        //int health = player.getHealth();
     }
 }

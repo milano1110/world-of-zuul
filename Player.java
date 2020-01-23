@@ -3,7 +3,7 @@ import java.util.Iterator;
  * This is the representation of a player
  *
  * @author M. Schuringa
- * @version 0.2
+ * @version 0.3
  */
 public class Player
 {
@@ -119,27 +119,37 @@ public class Player
         }
     }
     
+    /**
+     * Checks the players inventory to see if the player
+     * is wearing armour.
+     * @return True if the player is wearing armour.
+     */
     public boolean checkArmour()
     {
         boolean armour = false;
         if (items.getShortDescription().contains("armour"))
         {
             armour = true;
-            maxHealth = 30;
+            maxHealth = 125;
         }
         else
         {
             armour = false;
-            maxHealth = 20;
+            maxHealth = 100;
             if (health > maxHealth)
             {
-                health += -10;
+                health += -25;
             }
         }
         
         return armour;
     }
     
+    /**
+     * Checks the players inventory to see if the player
+     * is carrying a weapon.
+     * @return True if the player is carrying a weapon.
+     */
     public boolean checkWeapon()
     {
         boolean weapon = false;
@@ -181,6 +191,10 @@ public class Player
         }
     }
     
+    /**
+     * Checks if the player is dead.
+     * @return True if dead.
+     */
     public boolean isDead()
     {
         boolean dead = false;
@@ -284,6 +298,30 @@ public class Player
             {
                 addHealth(5);
                 return foodItem;
+            }
+        }
+        return null;
+    }
+    
+    /**
+     * Reads the item if possible.
+     * Only book is readable.
+     * @param itemName The item to be read.
+     */
+    public Item read(String itemName)
+    {
+        if (itemName.equals("book"))
+        {
+            Item readItem = items.get(itemName);
+            Item player = items.remove(itemName);
+            if (readItem == null)
+            {
+                return player;
+            }
+            
+            if (readItem != null)
+            {
+                return readItem;
             }
         }
         return null;

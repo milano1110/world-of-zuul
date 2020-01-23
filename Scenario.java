@@ -36,28 +36,32 @@ public class Scenario
         Item key3 = new Item ("corridorkey", "Corridor key", 0.25);
         Item key4 = new Item ("sanctumkey", "Sanctum key", 0.25);
         Item bread = new Item("bread", "tasty looking bread", 0.5);
-        Item book = new Item("book", "An ancient book", 2.5);
-        Item armour = new Item("armour", "Abyssal armour", 7.5);
-        Item weapon = new Item("whip", "Abyssal whip", 7);
-        Item Statue = new Item("statue", "A beautiful statue shaped after a goddess", 50);
+        Item book = new Item("book", "an ancient book", 2.5);
+        Item armour = new Item("armour", "Abyssal armour", 10);
+        Item weapon = new Item("whip", "Abyssal whip", 4);
+        Item statue = new Item("statue", "a beautiful statue shaped after a goddess", 50);
+        Item stone = new Item("stone", "Victory Stone", 1.5);
         
         // put items in the room
         garden.addItem(bread);
-        garden.addItem(Statue);
+        garden.addItem(statue);
+        
         tower2f.addItem(key1);
+        
         vault.addItem(key4);
         vault.addItem(armour);
         vault.addItem(weapon);
+        
         cathedral.addItem(key2);
         cathedral.addItem(book);
+        
         sanctum.addItem(key3);
+        
+        corridor.addItem(stone);
         
         // put NPC's in the room
         harbor.addNPC("Fisherman", "A friendly fisherman");
         tower2f.addNPC("King", "The King of the fortress");
-        
-        // give NPC item
-        
         
         // initialise room exits
         new Door(harbor, "east", garden, "west", null);

@@ -13,7 +13,10 @@ public class Sounds
     public Sounds()
     {
     }
-
+    
+    /**
+     * Plays a door sound.
+     */
     public void doorSound()
     {
         File doorOpen = new File("sounds/door_open.wav");
@@ -23,6 +26,9 @@ public class Sounds
         playSound(doorClose);
     }
     
+    /**
+     * Plays an eating sound.
+     */
     public void eatSound()
     {
         File eat1 = new File("sounds/eat1.wav");
@@ -38,24 +44,36 @@ public class Sounds
         playSound(burp);
     }
     
+    /**
+     * Plays a damage sound.
+     */
     public void takedamageSound()
     {
         File damage = new File("sounds/classic_hurt.wav");
         playSound(damage);
     }
     
+    /**
+     * Plays a pick up sound.
+     */
     public void pickupSound()
     {
         File pickup = new File("sounds/pop.wav");
         playSound(pickup);
     }
     
+    /**
+     * Plays a teleport sound.
+     */
     public void teleportSound()
     {
         File teleport = new File("sounds/travel.wav");
         playSound(teleport);
     }
     
+    /**
+     * Plays a ladder sound.
+     */
     public void upSound()
     {
         File up1 = new File("sounds/ladder5.wav");
@@ -74,8 +92,10 @@ public class Sounds
         playSound(up5);
     }
     
-    
-
+    /**
+     * Plays the sound from the file.
+     * @param sound The file path of the sound.
+     */
     public void playSound(File sound)
     {
         try
