@@ -428,7 +428,9 @@ public class Game
         int heal = rand.nextInt(high-low) + low;
         
         player.addHealth(heal);
+        System.out.println("You drank a health potion.");
         System.out.println("Your health is: " + player.printHealth());
+        sounds.drinkSound();
     }
     
     /**

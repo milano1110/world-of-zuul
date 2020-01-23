@@ -76,19 +76,19 @@ public class Sounds
      */
     public void upSound()
     {
-        File up1 = new File("sounds/ladder5.wav");
+        File up1 = new File("sounds/ladder1.wav");
         playSound(up1);
         
-        File up2 = new File("sounds/ladder4.wav");
+        File up2 = new File("sounds/ladder2.wav");
         playSound(up2);
         
         File up3 = new File("sounds/ladder3.wav");
         playSound(up3);
         
-        File up4 = new File("sounds/ladder2.wav");
+        File up4 = new File("sounds/ladder4.wav");
         playSound(up4);
         
-        File up5 = new File("sounds/ladder1.wav");
+        File up5 = new File("sounds/ladder5.wav");
         playSound(up5);
     }
     
