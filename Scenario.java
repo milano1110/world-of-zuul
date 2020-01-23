@@ -81,12 +81,12 @@ public class Scenario
         new Door(cathedral, "south", sanctum, "north", key4);
         
         new Door(sanctum, "east", corridor, "", key3);
-        /*
+        
         new Door(corridor, "north", harbor, "", null);
         new Door(corridor, "east", harbor, "", null);
         new Door(corridor, "south", harbor, "", null);
         new Door(corridor, "west", harbor, "", null);
-        */
+        
         startRoom = harbor;  // start game in the harbor
     }
 

@@ -1,4 +1,5 @@
 import java.util.Iterator;
+import java.util.Random;
 /**
  * This is the representation of a player
  *
@@ -13,8 +14,7 @@ public class Player
     private double maxWeight = 20;
     private int health;
     private int maxHealth = 100;
-    private int minDamage = 15;
-    private int maxdamage = 21;
+    private Random rand = new Random();
     
     /**
      * Initializing the player's name and start room.
@@ -350,5 +350,28 @@ public class Player
             }
         }
         return canPick;
+    }
+    
+    
+    private int playerAttack()
+    {
+        int low = 10;
+        int high = 21;
+        int damagePlayer = rand.nextInt(high-low) + low;
+        
+        if (items.getShortDescription().contains("whip"))
+        {
+            damagePlayer += 10;
+        }
+        return damagePlayer;
+    }
+    
+    private int bossAttack()
+    {
+        int low = 15;
+        int high = 26;
+        int damageBoss = rand.nextInt(high-low) + low;
+        
+        return damageBoss;
     }
 }

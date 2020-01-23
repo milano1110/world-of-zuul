@@ -31,6 +31,16 @@ public class Door
         lock(key);
     }
     
+    public String getDirection1()
+    {
+        return direction1;
+    }
+    
+    public String getDirection2()
+    {
+        return direction2;
+    }
+    
     /**
      * Try to lock the door with the key.
      * @return True if the door was successfully locked.

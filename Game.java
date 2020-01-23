@@ -199,11 +199,11 @@ public class Game
                 }
                 else
                 {
-                    if (direction == "up" || direction == "down")
+                    if (door.getDirection1() == "up" || door.getDirection2() == "down" || door.getDirection1() == "down" || door.getDirection2() == "up")
                     {
                         sounds.upSound();
                     }
-                    else
+                    else 
                     {
                         sounds.doorSound();
                     }
@@ -435,18 +435,13 @@ public class Game
      */
     private void attack(Command command)
     {
-        int low = 10;
-        int high = 21;
-        int damage = rand.nextInt(high-low) + low;
-        
         if (!command.hasSecondWord())
         {
             System.out.println("Who do you want to attack?");
         }
         
-        player.removeHealth(damage);
+        String bossName = command.getSecondWord();
+        
         System.out.println("Your health is: " + player.printHealth());
-        sounds.takedamageSound();
-        //int health = player.getHealth();
     }
 }
