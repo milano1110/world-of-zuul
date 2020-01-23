@@ -19,6 +19,7 @@ public class Game
     private Player player;
     private Scenario scenario;
     private Sounds sounds = new Sounds();
+    private boolean usedStone = false;
     
     /**
      * Create the game and initialise its internal map.
@@ -53,7 +54,7 @@ public class Game
                 finished = true;
             }
             
-            if (player.getPlayer().contains("Victory Stone"))
+            if (usedStone)
             {
                 printVictory();
                 finished = true;
@@ -143,6 +144,10 @@ public class Game
                 
             case READ:
                 read(command);
+                break;
+              
+            case USE:
+                use(command);
                 break;
         }
         return wantToQuit;
@@ -491,6 +496,7 @@ public class Game
                 System.out.println("The " + bossName + " is dead.");
                 player.getCurrentRoom().removeBoss(bossName);
                 player.getCurrentRoom().addItem(stats.getItem());
+                System.out.println("The " + bossName + " dropped a " + stats.getItem().getDescription());
             }
             else
             {
@@ -500,5 +506,32 @@ public class Game
                 System.out.println("Your health is: " + player.printHealth());
             }
         }
+    }
+    
+    /**
+     * Try to use an item.
+     * @param command The item to be used.
+     * @return True if it succeeds.
+     */
+    public boolean use(Command command)
+    {
+        if (!command.hasSecondWord())
+        {
+            System.out.println("What do you want to use?");
+            return usedStone;
+        }
+        
+        String itemName = command.getSecondWord();
+        Item item = player.use(itemName);
+        if (item == null)
+        {
+            System.out.println("Could not use the " + itemName);
+        }
+        else
+        {
+            printPlayer();
+            usedStone = true;
+        }
+        return usedStone;
     }
 }

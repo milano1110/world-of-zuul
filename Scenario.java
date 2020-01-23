@@ -37,10 +37,10 @@ public class Scenario
         Item key4 = new Item ("sanctumkey", "Sanctum key", 0.25);
         Item bread = new Item("bread", "tasty looking bread", 0.5);
         Item book = new Item("book", "an ancient book", 2.5);
-        Item armour = new Item("armour", "Abyssal armour", 10);
-        Item weapon = new Item("whip", "Abyssal whip", 4);
+        Item armour = new Item("armor", "Abyssal armor", 10);
+        Item weapon = new Item("sword", "Abyssal sword", 4);
         Item statue = new Item("statue", "a beautiful statue shaped after a goddess", 50);
-        Item pillar = new Item("pillar", "4 giant stone pillars with glowing orbs" , 150); //Eva made this
+        Item pillar = new Item("pillar", "four giant stone pillars with glowing orbs" , 150); //Eva made this
         Item stone = new Item("stone", "Victory Stone", 1.5);
         
         // put items in the room

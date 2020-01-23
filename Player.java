@@ -127,7 +127,7 @@ public class Player
     public boolean checkArmour()
     {
         boolean armour = false;
-        if (items.getShortDescription().contains("armour"))
+        if (items.getShortDescription().contains("armor"))
         {
             armour = true;
             maxHealth = 125;
@@ -153,13 +153,9 @@ public class Player
     public boolean checkWeapon()
     {
         boolean weapon = false;
-        if (items.getShortDescription().contains("weapon"))
+        if (items.getShortDescription().contains("sword"))
         {
             weapon = true;
-        }
-        else
-        {
-            weapon = false;
         }
         return weapon;
     }
@@ -357,7 +353,7 @@ public class Player
     }
     
     /**
-     * 
+     * Attacks a boss.
      * @param bossName The name of the boss to be attacked.
      * @return The name of the boss.
      */
@@ -384,10 +380,34 @@ public class Player
         int high = 21;
         int damage = rand.nextInt(high-low) + low;
         
-        if (items.getShortDescription().contains("whip"))
+        if (checkWeapon())
         {
             damage += 10;
         }
         return damage;
+    }
+    
+    /**
+     * Uses the item if possible.
+     * Only stone can be used.
+     * @param itemName The item to be used.
+     */
+    public Item use(String itemName)
+    {
+        if (itemName.equals("stone"))
+        {
+            Item item = items.getItem(itemName);
+            Item player = items.removeItem(itemName);
+            if (item == null)
+            {
+                return player;
+            }
+            
+            if (item != null)
+            {
+                return item;
+            }
+        }
+        return null;
     }
 }
