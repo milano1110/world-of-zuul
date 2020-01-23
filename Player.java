@@ -352,7 +352,10 @@ public class Player
         return canPick;
     }
     
-    
+    /**
+     * 
+     * @return The damage number that the player deals.
+     */
     private int playerAttack()
     {
         int low = 10;

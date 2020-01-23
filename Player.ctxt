@@ -44,6 +44,7 @@ comment21.target=boolean\ canPickItem(java.lang.String)
 comment21.text=\r\n\ Checks\ if\ we\ can\ pick\ up\ the\ given\ item.\ This\ depends\ on\ whether\ the\ item\ \r\n\ is\ actually\ in\ the\ current\ room\ and\ if\ it\ is\ not\ too\ heavy.\r\n\ @param\ itemName\ The\ item\ to\ be\ picked\ up\r\n\ @return\ true\ if\ the\ item\ can\ be\ picked\ up,\ false\ otherwise.\r\n
 comment22.params=
 comment22.target=int\ playerAttack()
+comment22.text=\r\n\ \r\n\ @return\ The\ damage\ number\ that\ the\ player\ deals.\r\n
 comment23.params=
 comment23.target=int\ bossAttack()
 comment3.params=room
