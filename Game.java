@@ -200,6 +200,7 @@ public class Game
                 else
                 {
                     if (door.getDirection1() == "up" || door.getDirection2() == "down" || door.getDirection1() == "down" || door.getDirection2() == "up")
+
                     {
                         sounds.upSound();
                     }

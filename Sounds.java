@@ -92,6 +92,14 @@ public class Sounds
         playSound(up5);
     }
     
+    public void drinkSound()
+    {
+        File drink = new File("sounds/drink.wav");
+        playSound(drink);
+        playSound(drink);
+        playSound(drink);
+    }
+    
     /**
      * Plays the sound from the file.
      * @param sound The file path of the sound.
