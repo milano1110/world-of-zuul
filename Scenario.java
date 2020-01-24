@@ -48,9 +48,10 @@ public class Scenario
         garden.addItem(statue);
         garden.addItem(pillar);
         
+        tower1f.addItem(key4);
+        
         tower2f.addItem(key1);
         
-        vault.addItem(key4);
         vault.addItem(armour);
         vault.addItem(weapon);
         
@@ -74,8 +75,8 @@ public class Scenario
         sanctum.addBoss(boss);
         
         // initialise room exits
-        new Door(harbor, "east", garden, "west", null);
-        new Door(harbor, "south", fortress, "north", key2);
+        new Door(harbor, "south", garden, "north", null);
+        new Door(harbor, "west", fortress, "east", key2);
         //new Door(harbor, "north", sanctum, "south", null);
         
         new Door(garden, "south", city, "north", null);
@@ -89,7 +90,7 @@ public class Scenario
         new Door(tower, "up", tower1f, "down", null); 
         new Door(tower1f, "up", tower2f, "down", null);
         
-        new Door(cathedral, "south", sanctum, "north", key4);
+        new Door(cathedral, "east", sanctum, "west", key4);
         
         new Door(sanctum, "east", corridor, "", key3);
         

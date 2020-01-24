@@ -296,7 +296,7 @@ public class Player
             
             if (foodItem != null)
             {
-                addHealth(5);
+                addHealth(10);
                 return foodItem;
             }
         }

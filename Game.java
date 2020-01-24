@@ -491,10 +491,12 @@ public class Game
             stats.removeHealth(playerDamage);
             System.out.println("You hit the boss for " + playerDamage + " damage!");
             System.out.println("The " + bossName + "'s health is: " + stats.printHealth());
+            sounds.demonhitSound();
             if (stats.isDead())
             {
                 System.out.println("The " + bossName + " is dead.");
                 player.getCurrentRoom().removeBoss(bossName);
+                sounds.demondeathSound();
                 player.getCurrentRoom().addItem(stats.getItem());
                 System.out.println("The " + bossName + " dropped a " + stats.getItem().getDescription());
             }
@@ -504,6 +506,7 @@ public class Game
                 player.removeHealth(bossDamage);
                 System.out.println("The " + bossName + " hit you for " + bossDamage + " damage!");
                 System.out.println("Your health is: " + player.printHealth());
+                sounds.takedamageSound();
             }
         }
     }

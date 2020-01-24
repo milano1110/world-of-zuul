@@ -100,6 +100,18 @@ public class Sounds
         playSound(drink);
     }
     
+    public void demonhitSound()
+    {
+        File demonHit = new File("sounds/demonhit4.wav");
+        playSound(demonHit);
+    }
+    
+    public void demondeathSound()
+    {
+        File demondeath = new File("sounds/demondeath.wav");
+        playSound(demondeath);
+    }
+    
     /**
      * Plays the sound from the file.
      * @param sound The file path of the sound.
