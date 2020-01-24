@@ -68,10 +68,11 @@ public class Scenario
         // put NPC's in the room
         harbor.addNPC("Fisherman", "a friendly fisherman");
         
+        garden.addNPC("Ayalin", "a young woman drawing the statue"); //Eva made this
+        
         tower2f.addNPC("King", "the King of the fortress");
         
-        garden.addNPC("Ayalin", "a young woman drawing the statue");
-        
+        // put boss in the room
         sanctum.addBoss(boss);
         
         // initialise room exits
