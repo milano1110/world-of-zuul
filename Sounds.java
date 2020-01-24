@@ -92,6 +92,9 @@ public class Sounds
         playSound(up5);
     }
     
+    /**
+     * Plays a drinking sound.
+     */
     public void drinkSound()
     {
         File drink = new File("sounds/drink.wav");
@@ -100,12 +103,18 @@ public class Sounds
         playSound(drink);
     }
     
+    /**
+     * Plays a demon hit sound.
+     */
     public void demonhitSound()
     {
         File demonHit = new File("sounds/demonhit4.wav");
         playSound(demonHit);
     }
     
+    /**
+     * Plays a demon death sound.
+     */
     public void demondeathSound()
     {
         File demondeath = new File("sounds/demondeath.wav");
